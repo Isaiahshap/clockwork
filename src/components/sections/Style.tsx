@@ -13,8 +13,11 @@ export default function Style() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-bebas text-5xl md:text-6xl tracking-wider mb-4">OUR STYLE</h2>
-          <div className="w-24 h-1 bg-white mx-auto"></div>
+          <h2 className="font-bebas text-5xl md:text-6xl tracking-wider mb-4 relative inline-block">
+            <span className="relative z-10">OUR STYLE</span>
+            <span className="absolute -bottom-2 left-0 w-full h-1 bg-white"></span>
+          </h2>
+          <div className="w-32 h-1 bg-gradient-to-r from-white/20 via-white to-white/20 mx-auto mt-6"></div>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
@@ -27,29 +30,32 @@ export default function Style() {
           >
             <div className="absolute -left-4 top-0 h-full w-1 bg-white/20"></div>
             <div className="pl-8">
-              <h3 className="font-bebas text-2xl tracking-wide mb-6 text-white">RESPECT FIRST</h3>
+              <h3 className="font-bebas text-3xl tracking-wide mb-6 text-white relative inline-block">
+                <span className="relative z-10">RESPECT FIRST</span>
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-white/30"></span>
+              </h3>
               <p className="font-montserrat text-white/80 leading-relaxed mb-4">
-                At Clockwork we believe you deserve to be treated with respect. 
+                At Clockwork we believe you deserve to be treated with <span className="text-white font-medium">respect</span>. 
                 We understand that sometimes the hardest part of any journey is 
                 walking through the door on that first day. That&apos;s why we 
-                offer a free trial class so you can see if this is a good fit.
+                offer a <span className="text-white font-medium">free trial class</span> so you can see if this is a good fit.
               </p>
               
               <div className="mt-8 mb-4">
-                <span className="font-bebas text-xl tracking-wide inline-block border-b-2 border-white pb-1">OUR APPROACH</span>
+                <span className="font-bebas text-xl tracking-wide inline-block border-b-2 border-white/60 pb-1 text-white">OUR APPROACH</span>
               </div>
-              <ul className="space-y-3 font-montserrat text-white/80">
+              <ul className="space-y-4 font-montserrat text-white/80">
                 <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white flex-shrink-0"></div>
-                  <span>Respectful and welcoming environment</span>
+                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
+                  <span className="leading-relaxed">Respectful and welcoming environment</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white flex-shrink-0"></div>
-                  <span>Free trial class for new students</span>
+                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
+                  <span className="leading-relaxed">Free trial class for new students</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white flex-shrink-0"></div>
-                  <span>Focus on making you comfortable</span>
+                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
+                  <span className="leading-relaxed">Focus on making you comfortable</span>
                 </li>
               </ul>
             </div>
@@ -64,34 +70,37 @@ export default function Style() {
           >
             <div className="absolute -left-4 top-0 h-full w-1 bg-white/20"></div>
             <div className="pl-8">
-              <h3 className="font-bebas text-2xl tracking-wide mb-6 text-white">STRONG FOUNDATIONS</h3>
+              <h3 className="font-bebas text-3xl tracking-wide mb-6 text-white relative inline-block">
+                <span className="relative z-10">STRONG FOUNDATIONS</span>
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-white/30"></span>
+              </h3>
               <p className="font-montserrat text-white/80 leading-relaxed mb-4">
                 Our approach to building a well-developed curriculum is based on 
-                the fundamentals of Jiu Jitsu. We believe that a strong foundation 
+                the <span className="text-white font-medium">fundamentals of Jiu Jitsu</span>. We believe that a strong foundation 
                 reinforces the core of your game with much thought and 
                 consideration.
               </p>
               <p className="font-montserrat text-white/80 leading-relaxed mb-4">
                 We&apos;ve developed a curriculum that balances both 
-                efficiency and experience factors building on it, refining and 
-                improving techniques down the essential details.
+                <span className="text-white font-medium">efficiency and experience</span> factors, building on it, refining and 
+                improving techniques down to the essential details.
               </p>
               
               <div className="mt-8 mb-4">
-                <span className="font-bebas text-xl tracking-wide inline-block border-b-2 border-white pb-1">CURRICULUM FOCUS</span>
+                <span className="font-bebas text-xl tracking-wide inline-block border-b-2 border-white/60 pb-1 text-white">CURRICULUM FOCUS</span>
               </div>
-              <ul className="space-y-3 font-montserrat text-white/80">
+              <ul className="space-y-4 font-montserrat text-white/80">
                 <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white flex-shrink-0"></div>
-                  <span>Fundamental techniques</span>
+                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
+                  <span className="leading-relaxed">Fundamental techniques</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white flex-shrink-0"></div>
-                  <span>Balance of efficiency and experience</span>
+                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
+                  <span className="leading-relaxed">Balance of efficiency and experience</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white flex-shrink-0"></div>
-                  <span>Refined techniques with essential details</span>
+                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
+                  <span className="leading-relaxed">Refined techniques with essential details</span>
                 </li>
               </ul>
             </div>
@@ -107,9 +116,10 @@ export default function Style() {
         >
           <a 
             href="/free-trial" 
-            className="font-bebas inline-block bg-white text-gray-900 px-8 py-4 text-xl tracking-wider hover:bg-gray-200 transition-colors duration-200"
+            className="font-bebas inline-block bg-white text-gray-900 px-10 py-4 text-xl tracking-wider hover:bg-gray-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative overflow-hidden group"
           >
-            TRY A FREE CLASS
+            <span className="relative z-10">TRY A FREE CLASS</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-white via-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </a>
         </motion.div>
       </div>
