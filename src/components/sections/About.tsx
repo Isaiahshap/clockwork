@@ -8,7 +8,7 @@ export default function About() {
     <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
@@ -18,7 +18,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-12 md:-mx-12 lg:-mx-20 xl:-mx-32 px-0">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="aspect-auto h-full w-full overflow-hidden relative shadow-xl shadow-black/30 border border-white/10"
@@ -33,7 +33,7 @@ export default function About() {
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
@@ -56,7 +56,7 @@ export default function About() {
           <motion.div 
             className="text-center mt-12"
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
@@ -66,7 +66,7 @@ export default function About() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              JOIN OUR COMMUNITY
+              MORE ABOUT OUR COMMUNITY
             </motion.a>
           </motion.div>
         </div>

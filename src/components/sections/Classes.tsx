@@ -31,7 +31,7 @@ export default function Classes() {
         <motion.h2 
           className="font-bebas text-4xl md:text-5xl mb-12 tracking-wider text-center"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
@@ -44,7 +44,7 @@ export default function Classes() {
               key={classType.title}
               className="bg-black border border-zinc-800 overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >

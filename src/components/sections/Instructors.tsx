@@ -11,7 +11,7 @@ export default function Instructors() {
         <motion.h2 
           className="font-bebas text-4xl md:text-5xl mb-12 tracking-wider text-center"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
@@ -22,7 +22,7 @@ export default function Instructors() {
           <motion.div 
             className="relative"
             initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
@@ -45,7 +45,7 @@ export default function Instructors() {
           <motion.div
             className="font-montserrat text-white/90"
             initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
@@ -78,7 +78,7 @@ export default function Instructors() {
         <div className="text-center mt-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >

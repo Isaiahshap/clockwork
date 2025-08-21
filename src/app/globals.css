@@ -5,6 +5,9 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
+  --navbar-height: 7rem; /* Default navbar height (h-28) */
+  --navbar-height-scrolled: 5rem; /* Scrolled navbar height (h-20) */
+  --contact-bar-height: 2rem; /* Contact bar height (h-8) */
 }
 
 @theme inline {
@@ -23,5 +26,23 @@ body {
 @layer utilities {
   .duration-2000 {
     transition-duration: 2000ms;
+  }
+}
+
+/* Calendar iframe responsive settings */
+.calendar-iframe {
+  height: 1200px; /* Increased height to show full calendar */
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .calendar-iframe {
+    height: 1000px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-iframe {
+    height: 900px;
   }
 }

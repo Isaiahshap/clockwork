@@ -1,5 +1,18 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Coding Standards and Rules
+
+### Animation Rules
+- **NEVER** use `whileInView` for animations. Always use `animate` instead to ensure content is visible immediately on page load.
+- All animations should be visible without requiring scrolling or page refresh.
+- Use `animate` with the `opacity` and position properties for consistent animations across the site.
+
+### Best Practices
+- Always use pnpm for package management.
+- Follow established component patterns and styling conventions.
+- Ensure responsive design works on all device sizes.
+- Test all interactive elements for accessibility.
+
 ## Getting Started
 
 First, run the development server:
