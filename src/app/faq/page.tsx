@@ -211,7 +211,7 @@ export default function FAQPage() {
         <section className="relative h-[40vh] w-full overflow-hidden" style={{ marginTop: 'var(--navbar-height)' }}>
           {/* Hero Background Image */}
           <Image
-            src="/images/gym-building.jpg"
+            src="/images/Clockwork2.webp"
             alt="Clockwork BJJ New York City"
             fill
             priority
@@ -440,7 +440,7 @@ export default function FAQPage() {
               <h2 className="font-bebas text-3xl md:text-4xl mb-8 tracking-wider text-center">OUR PROMISE TO YOU</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="aspect-video relative rounded-lg overflow-hidden">
+                <div className="aspect-video relative overflow-hidden">
                   <Image 
                     src="/images/private.webp"
                     alt="Clockwork BJJ Training"

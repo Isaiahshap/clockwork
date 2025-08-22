@@ -29,7 +29,7 @@ export default function BootcampPage() {
         <section className="relative h-[40vh] w-full overflow-hidden" style={{ marginTop: 'var(--navbar-height)' }}>
           {/* Hero Background Image */}
           <Image
-            src="/images/hero-bg2.webp"
+            src="/images/Clockwork14.webp"
             alt="Clockwork BJJ Bootcamp"
             fill
             priority

@@ -16,7 +16,7 @@ export default function ContactPage() {
         <section className="relative h-[40vh] w-full overflow-hidden" style={{ marginTop: 'var(--navbar-height)' }}>
           {/* Hero Background Image */}
           <Image
-            src="/images/hero-bg3.webp"
+            src="/images/Clockwork9.webp"
             alt="Clockwork BJJ Contact"
             fill
             priority

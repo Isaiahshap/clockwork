@@ -73,7 +73,7 @@ export default function FreeTrialPage() {
         <section className="relative h-[40vh] w-full overflow-hidden" style={{ marginTop: 'var(--navbar-height)' }}>
           {/* Hero Background Image */}
           <Image
-            src="/images/hero-bg2.webp"
+            src="/images/Clockwork10.webp"
             alt="Clockwork BJJ Free Trial"
             fill
             priority

@@ -24,7 +24,7 @@ export default function SchedulePage() {
         <section className="relative h-[40vh] w-full overflow-hidden" style={{ marginTop: 'var(--navbar-height)' }}>
           {/* Hero Background Image */}
           <Image
-            src="/images/adultclasses.webp"
+            src="/images/Clockwork7.webp"
             alt="Clockwork BJJ Schedule"
             fill
             priority

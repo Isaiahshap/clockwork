@@ -95,7 +95,7 @@ export default function PrivateTrainingPage() {
         <section className="relative h-[40vh] w-full overflow-hidden" style={{ marginTop: 'var(--navbar-height)' }}>
           {/* Hero Background Image */}
           <Image
-            src="/images/private.webp"
+            src="/images/Clockwork15.webp"
             alt="Clockwork BJJ Private Training"
             fill
             priority
@@ -231,9 +231,9 @@ export default function PrivateTrainingPage() {
                     className="object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <div className="aspect-square w-full overflow-hidden relative shadow-xl shadow-black/30 border border-zinc-800">
+                <div className="aspect-video w-full overflow-hidden relative shadow-xl shadow-black/30 border border-zinc-800">
                   <Image 
-                    src="/images/josh.webp"
+                    src="/images/Clockwork16.webp"
                     alt="Clockwork BJJ Private Instruction"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-700"

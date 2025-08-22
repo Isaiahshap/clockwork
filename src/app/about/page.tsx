@@ -15,7 +15,7 @@ export default function AboutPage() {
         <section className="relative h-[40vh] w-full overflow-hidden" style={{ marginTop: 'var(--navbar-height)' }}>
           {/* Hero Background Image */}
           <Image
-            src="/images/gym-building.jpg"
+            src="/images/Clockwork1.webp"
             alt="Clockwork BJJ Gym"
             fill
             priority
@@ -53,7 +53,7 @@ export default function AboutPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                   <p className="font-montserrat text-lg mb-6 leading-relaxed">
-                    Founded in 2010, Clockwork BJJ has been a cornerstone of the New York City jiu-jitsu community for over a decade. What started as a small group of dedicated practitioners has grown into one of the most respected academies in downtown Manhattan.
+                    Founded in 2017, Clockwork BJJ has been a cornerstone of the New York City jiu-jitsu community for over 8 years. What started as a small group of dedicated practitioners has grown into one of the most respected academies in downtown Manhattan.
                   </p>
                   <p className="font-montserrat text-lg mb-6 leading-relaxed font-bold">
                     Our name &quot;Clockwork&quot; represents the precision and consistency we bring to the art of jiu-jitsu.
@@ -85,7 +85,7 @@ export default function AboutPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div className="order-2 md:order-1 aspect-square w-full overflow-hidden relative shadow-xl shadow-black/30 border border-white/10">
                   <Image 
-                    src="/images/josh.webp"
+                    src="/images/Clockwork3.webp"
                     alt="Clockwork BJJ Instruction"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-700"
@@ -141,7 +141,7 @@ export default function AboutPage() {
               <h2 className="font-bebas text-3xl md:text-4xl mb-8 tracking-wider">OUR FACILITY</h2>
               <div className="aspect-video w-full overflow-hidden relative shadow-xl shadow-black/30 border border-white/10 mb-8">
                 <Image 
-                  src="/images/hero-bg3.webp"
+                  src="/images/Clockwork10.webp"
                   alt="Clockwork BJJ Facility"
                   fill
                   className="object-cover"

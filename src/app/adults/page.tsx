@@ -96,7 +96,7 @@ export default function AdultClassesPage() {
         <section className="relative h-[40vh] w-full overflow-hidden" style={{ marginTop: 'var(--navbar-height)' }}>
           {/* Hero Background Image */}
           <Image
-            src="/images/adultclasses.webp"
+            src="/images/Clockwork5.webp"
             alt="Clockwork BJJ Adult Classes"
             fill
             priority
@@ -150,7 +150,7 @@ export default function AdultClassesPage() {
                 </p>
                 <div className="aspect-video w-full overflow-hidden relative shadow-xl shadow-black/30 border border-white/10 mb-6">
                   <Image 
-                    src="/images/hero-bg2.webp"
+                    src="/images/Clockwork7.webp"
                     alt="Clockwork BJJ Fundamentals"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-700"
@@ -171,7 +171,7 @@ export default function AdultClassesPage() {
                 </p>
                 <div className="aspect-video w-full overflow-hidden relative shadow-xl shadow-black/30 border border-white/10 mb-6">
                   <Image 
-                    src="/images/hero-bg3.webp"
+                    src="/images/Clockwork8.webp"
                     alt="Clockwork BJJ Advanced Classes"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-700"

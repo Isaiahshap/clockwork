@@ -64,7 +64,7 @@ export default function Classes() {
                 <p className="font-montserrat mb-6 text-gray-300">{classType.description}</p>
                 <Link 
                   href={classType.link}
-                  className="font-bebas inline-block border border-white px-4 py-2 text-sm tracking-wider hover:bg-white hover:text-black transition-colors duration-200"
+                  className="font-bebas inline-block border border-white px-8 py-4 text-xl tracking-wider hover:bg-white hover:text-black transition-colors duration-200 w-full text-center"
                 >
                   LEARN MORE
                 </Link>

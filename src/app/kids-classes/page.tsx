@@ -96,7 +96,7 @@ export default function KidsClassesPage() {
         <section className="relative h-[50vh] w-full overflow-hidden" style={{ marginTop: 'var(--navbar-height)' }}>
           {/* Hero Background Image */}
           <Image
-            src="/images/kidsclasses.webp"
+            src="/images/Clockwork13.webp"
             alt="Clockwork BJJ Kids Classes"
             fill
             priority

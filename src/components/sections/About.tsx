@@ -63,8 +63,6 @@ export default function About() {
             <motion.a 
               href="/about"
               className="font-bebas inline-block bg-white text-black px-8 py-4 text-xl tracking-wider hover:bg-gray-200 transition-colors duration-200"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               MORE ABOUT OUR COMMUNITY
             </motion.a>

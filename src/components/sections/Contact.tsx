@@ -94,16 +94,16 @@ export default function Contact() {
               </div>
             </div>
             
-            <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 href="/contact"
-                className="font-bebas inline-block border-2 border-white px-6 py-3 text-lg tracking-wider hover:bg-white hover:text-black transition-colors duration-200 text-center sm:text-left"
+                className="font-bebas inline-block border border-white px-8 py-4 text-xl tracking-wider hover:bg-white hover:text-black transition-colors duration-200 text-center w-full sm:w-auto"
               >
                 CONTACT US
               </Link>
               <Link 
                 href="/free-trial"
-                className="font-bebas inline-block bg-white text-black px-6 py-3 text-lg tracking-wider hover:bg-gray-200 transition-colors duration-200 text-center sm:text-left"
+                className="font-bebas inline-block bg-white text-black px-8 py-4 text-xl tracking-wider hover:bg-gray-200 transition-colors duration-200 text-center w-full sm:w-auto"
               >
                 FREE TRIAL
               </Link>
