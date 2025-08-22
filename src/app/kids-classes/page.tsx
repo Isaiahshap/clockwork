@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { motion } from 'framer-motion';
@@ -22,38 +23,67 @@ export default function KidsClassesPage() {
       try {
         const iframe = iframeRef.current;
         if (iframe && iframe.contentWindow && iframe.contentDocument) {
-          // Wait for iframe content to load fully
-          setTimeout(() => {
+          // Set up a resize observer to continuously monitor the iframe content size
+          const resizeObserver = new ResizeObserver(() => {
             try {
-              // Get the height of the form content
-              const formHeight = iframe.contentDocument?.body?.scrollHeight || 800;
-              // Add some buffer to ensure everything is visible
-              iframe.style.height = `${formHeight + 50}px`;
+              // Get the full height of the form content
+              const formHeight = iframe.contentDocument?.body?.scrollHeight || 1000;
+              // Add minimal buffer to ensure everything is visible
+              iframe.style.height = `${formHeight + 20}px`;
             } catch {
               console.log("Could not adjust iframe height");
             }
-          }, 1000);
+          });
+          
+          // Observe the iframe document body
+          if (iframe.contentDocument?.body) {
+            resizeObserver.observe(iframe.contentDocument.body);
+          }
+          
+          // Also set an initial height and check periodically
+          const initialCheck = () => {
+            try {
+              const formHeight = iframe.contentDocument?.body?.scrollHeight || 1000;
+              iframe.style.height = `${formHeight + 20}px`;
+            } catch {
+              console.log("Could not set initial iframe height");
+            }
+          };
+          
+          // Initial check after a delay to ensure content is loaded
+          setTimeout(initialCheck, 1000);
+          
+          // Set up periodic checks for the first minute to handle dynamic content loading
+          const intervalId = setInterval(initialCheck, 3000);
+          setTimeout(() => clearInterval(intervalId), 60000);
+          
+          // Return cleanup function
+          return () => {
+            resizeObserver.disconnect();
+            clearInterval(intervalId);
+          };
         }
-      } catch {
-        console.log("Error accessing iframe content");
+      } catch (error) {
+        console.log("Error setting up iframe height adjustment:", error);
       }
     };
     
     // Call the function when the iframe loads
     if (isFormLoaded) {
-      adjustIframeHeight();
+      const cleanup = adjustIframeHeight();
+      return cleanup;
     }
     
     // Add event listener for iframe load
     const iframe = iframeRef.current;
     if (iframe) {
-      iframe.addEventListener('load', adjustIframeHeight);
+      iframe.addEventListener('load', handleIframeLoad);
     }
     
     // Clean up event listener when component unmounts
     return () => {
       if (iframe) {
-        iframe.removeEventListener('load', adjustIframeHeight);
+        iframe.removeEventListener('load', handleIframeLoad);
       }
     };
   }, [isFormLoaded]);
@@ -100,15 +130,14 @@ export default function KidsClassesPage() {
         </section>
 
         {/* Main Content Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="max-w-6xl mx-auto">
             {/* Introduction with fun border */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="mb-16 p-8 bg-gradient-to-br from-zinc-900 to-zinc-800 rounded-lg border-4 border-white/10 shadow-xl"
+              className="mb-16 p-8 bg-gradient-to-br from-zinc-900 to-zinc-800 border-4 border-white/10 shadow-xl"
             >
               <div className="relative">
 
@@ -140,13 +169,12 @@ export default function KidsClassesPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20, rotateY: 10 }}
                 animate={{ opacity: 1, y: 0, rotateY: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="bg-gradient-to-b from-zinc-800 to-zinc-900 rounded-xl overflow-hidden shadow-xl border border-white/10 hover:border-blue-500/50 transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-gradient-to-b from-zinc-800 to-zinc-900 overflow-hidden shadow-xl border border-white/10 hover:border-blue-500/50 transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="h-4 bg-gradient-to-r from-blue-400 to-blue-600"></div>
                 <div className="p-8">
-                  <div className="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mb-6 mx-auto">
+                  <div className="w-16 h-16 bg-blue-500/20 flex items-center justify-center mb-6 mx-auto">
                     <span className="font-bebas text-3xl text-blue-400">4-6</span>
                   </div>
                   <h3 className="font-bebas text-3xl mb-4 tracking-wide text-center">KIDS 4-6 PROGRAM</h3>
@@ -177,13 +205,12 @@ export default function KidsClassesPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20, rotateY: 10 }}
                 animate={{ opacity: 1, y: 0, rotateY: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="bg-gradient-to-b from-zinc-800 to-zinc-900 rounded-xl overflow-hidden shadow-xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-gradient-to-b from-zinc-800 to-zinc-900 overflow-hidden shadow-xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="h-4 bg-gradient-to-r from-purple-400 to-purple-600"></div>
                 <div className="p-8">
-                  <div className="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mb-6 mx-auto">
+                  <div className="w-16 h-16 bg-purple-500/20 flex items-center justify-center mb-6 mx-auto">
                     <span className="font-bebas text-3xl text-purple-400">6-9</span>
                   </div>
                   <h3 className="font-bebas text-3xl mb-4 tracking-wide text-center">KIDS 6-9 PROGRAM</h3>
@@ -213,13 +240,12 @@ export default function KidsClassesPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20, rotateY: 10 }}
                 animate={{ opacity: 1, y: 0, rotateY: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="bg-gradient-to-b from-zinc-800 to-zinc-900 rounded-xl overflow-hidden shadow-xl border border-white/10 hover:border-pink-500/50 transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-gradient-to-b from-zinc-800 to-zinc-900 overflow-hidden shadow-xl border border-white/10 hover:border-pink-500/50 transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="h-4 bg-gradient-to-r from-pink-400 to-pink-600"></div>
                 <div className="p-8">
-                  <div className="w-16 h-16 rounded-full bg-pink-500/20 flex items-center justify-center mb-6 mx-auto">
+                  <div className="w-16 h-16 bg-pink-500/20 flex items-center justify-center mb-6 mx-auto">
                     <span className="font-bebas text-3xl text-pink-400">9-13</span>
                   </div>
                   <h3 className="font-bebas text-3xl mb-4 tracking-wide text-center">KIDS 9-13 PROGRAM</h3>
@@ -250,16 +276,15 @@ export default function KidsClassesPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="mb-20 relative"
             >
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/10 blur-3xl"></div>
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500/10 blur-3xl"></div>
               
-              <div className="relative bg-gradient-to-br from-zinc-900 to-zinc-800 rounded-2xl overflow-hidden p-1">
+              <div className="relative bg-gradient-to-br from-zinc-900 to-zinc-800 p-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
-                  <div className="aspect-video w-full overflow-hidden rounded-lg shadow-xl relative transform -rotate-1 hover:rotate-0 transition-transform duration-500">
+                  <div className="aspect-video w-full overflow-hidden shadow-xl relative transform -rotate-1 hover:rotate-0 transition-transform duration-500">
                     <Image 
                       src="/images/kidsclasses.webp"
                       alt="Kids training"
@@ -291,7 +316,7 @@ export default function KidsClassesPage() {
                           transition={{ duration: 0.3, delay: 0.5 + (index * 0.1) }}
                           className="flex items-center"
                         >
-                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mr-4 shadow-lg">
+                          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mr-4 shadow-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
@@ -309,11 +334,10 @@ export default function KidsClassesPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="mb-12 relative"
             >
-              <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-40 h-40 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
+              <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-40 h-40 bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-3xl"></div>
               
               <div className="relative">
                 <div className="text-center mb-12">
@@ -338,10 +362,14 @@ export default function KidsClassesPage() {
                     <div className="w-full relative">
                       {/* Loading Indicator */}
                       {!isFormLoaded && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10 rounded-lg">
+                        <div className="h-[800px] flex items-center justify-center bg-black/50">
                           <div className="flex flex-col items-center">
-                            <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin mb-4"></div>
-                            <p className="font-montserrat text-white/80">Loading form...</p>
+                            <div className="relative w-20 h-20 mb-6">
+                              <div className="absolute top-0 left-0 w-full h-full border-4 border-white/10 animate-pulse"></div>
+                              <div className="absolute top-0 left-0 w-full h-full border-t-4 border-white animate-spin"></div>
+                            </div>
+                            <p className="font-montserrat text-xl">Loading form...</p>
+                            <p className="font-montserrat text-white/60 mt-2">Please wait while we prepare your registration</p>
                           </div>
                         </div>
                       )}
@@ -350,19 +378,46 @@ export default function KidsClassesPage() {
                         ref={iframeRef}
                         src="https://eng.zenplanner.com/widget/form/NJB5bxSCFtwtBkC9idKb"
                         width="100%" 
-                        height="800"
+                        height="900"
                         style={{ 
                           border: 0,
                           background: 'transparent',
-                          minHeight: '800px'
+                          minHeight: '900px',
+                          width: '100%',
+                          overflow: 'hidden'
                         }} 
                         onLoad={handleIframeLoad}
                         title="Clockwork BJJ Kids Sign Up Form"
-                        className="bg-transparent"
+                        className={`bg-transparent ${!isFormLoaded ? 'hidden' : 'block'}`}
                         frameBorder="0"
                         scrolling="no"
+
                       ></iframe>
                 </div>
+              </div>
+            </motion.div>
+
+            {/* CTA Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mt-6 text-center"
+            >
+              <h3 className="font-bebas text-2xl md:text-3xl mb-4 tracking-wider">NEED MORE INFO?</h3>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link 
+                  href="/faq" 
+                  className="font-montserrat bg-transparent border-2 border-white text-white px-8 py-3 hover:bg-white hover:text-black transition-all duration-300 text-lg font-medium"
+                >
+                  VIEW FAQ
+                </Link>
+                <Link 
+                  href="/contact" 
+                  className="font-montserrat bg-white text-black px-8 py-3 hover:bg-gray-200 transition-all duration-300 text-lg font-medium"
+                >
+                  CONTACT US
+                </Link>
               </div>
             </motion.div>
           </div>

@@ -33,7 +33,7 @@ export default function FreeTrialPage() {
           setTimeout(() => {
             try {
               // Get the height of the form content
-              const formHeight = iframe.contentDocument?.body?.scrollHeight || 800;
+              const formHeight = iframe.contentDocument?.body?.scrollHeight || 900;
               // Add some buffer to ensure everything is visible
               iframe.style.height = `${formHeight + 50}px`;
             } catch {
@@ -123,7 +123,7 @@ export default function FreeTrialPage() {
               className="mb-12"
             >
               <div className="flex justify-center mb-8">
-                <div className="inline-flex rounded-md shadow-sm border border-zinc-700 overflow-hidden">
+                <div className="inline-flex border border-zinc-700 overflow-hidden">
                   <button
                     onClick={() => setActiveTab('adults')}
                     className={`px-8 py-4 font-bebas text-xl tracking-wider transition-colors duration-200 ${
@@ -148,7 +148,7 @@ export default function FreeTrialPage() {
               </div>
 
               {/* Tab Content */}
-              <div className="bg-zinc-900 border border-zinc-800 p-8 rounded-lg">
+              <div className="bg-zinc-900 border border-zinc-800 p-8">
                 {/* Adults Tab Content */}
                 {activeTab === 'adults' && (
                   <motion.div
@@ -166,7 +166,7 @@ export default function FreeTrialPage() {
                         </p>
                         <div className="space-y-4 mb-6">
                           <div className="flex items-start">
-                            <div className="bg-white/10 p-2 rounded-full mr-3 flex-shrink-0">
+                            <div className="bg-white/10 p-2 mr-3 flex-shrink-0">
                               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                               </svg>
@@ -179,7 +179,7 @@ export default function FreeTrialPage() {
                             </div>
                           </div>
                           <div className="flex items-start">
-                            <div className="bg-white/10 p-2 rounded-full mr-3 flex-shrink-0">
+                            <div className="bg-white/10 p-2 mr-3 flex-shrink-0">
                               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                               </svg>
@@ -193,7 +193,7 @@ export default function FreeTrialPage() {
                           </div>
                         </div>
                       </div>
-                      <div className="aspect-video relative rounded-lg overflow-hidden">
+                      <div className="aspect-video relative overflow-hidden">
                         <Image 
                           src="/images/adultclasses.webp"
                           alt="Clockwork BJJ Adult Classes"
@@ -211,9 +211,9 @@ export default function FreeTrialPage() {
                       <div className="w-full relative">
                         {/* Loading Indicator */}
                         {!isFormLoaded && (
-                          <div className="h-[800px] flex items-center justify-center bg-black/50 rounded-lg">
+                          <div className="h-[900px] flex items-center justify-center bg-black/50">
                             <div className="flex flex-col items-center">
-                              <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin mb-4"></div>
+                              <div className="w-16 h-16 border-4 border-white/20 border-t-white animate-spin mb-4"></div>
                               <p className="font-montserrat text-white/80">Loading form...</p>
                             </div>
                           </div>
@@ -223,11 +223,11 @@ export default function FreeTrialPage() {
                           ref={iframeRef}
                           src="https://eng.zenplanner.com/widget/form/zZQW4SE3tmnobQ3E92bK"
                           width="100%" 
-                          height="800"
+                          height="900"
                           style={{ 
                             border: 0,
                             background: 'transparent',
-                            minHeight: '800px'
+                            minHeight: '900px'
                           }} 
                           onLoad={handleIframeLoad}
                           title="Clockwork BJJ Adult Sign Up Form"
@@ -257,7 +257,7 @@ export default function FreeTrialPage() {
                         </p>
                         <div className="space-y-4 mb-6">
                           <div className="flex items-start">
-                            <div className="bg-white/10 p-2 rounded-full mr-3 flex-shrink-0">
+                            <div className="bg-white/10 p-2 mr-3 flex-shrink-0">
                               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                               </svg>
@@ -270,7 +270,7 @@ export default function FreeTrialPage() {
                             </div>
                           </div>
                           <div className="flex items-start">
-                            <div className="bg-white/10 p-2 rounded-full mr-3 flex-shrink-0">
+                            <div className="bg-white/10 p-2 mr-3 flex-shrink-0">
                               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                               </svg>
@@ -284,7 +284,7 @@ export default function FreeTrialPage() {
                           </div>
                         </div>
                       </div>
-                      <div className="aspect-video relative rounded-lg overflow-hidden">
+                      <div className="aspect-video relative overflow-hidden">
                         <Image 
                           src="/images/kidsclasses.webp"
                           alt="Clockwork BJJ Kids Classes"
@@ -302,9 +302,9 @@ export default function FreeTrialPage() {
                       <div className="w-full relative">
                         {/* Loading Indicator */}
                         {!isFormLoaded && (
-                          <div className="h-[800px] flex items-center justify-center bg-black/50 rounded-lg">
+                          <div className="h-[900px] flex items-center justify-center bg-black/50">
                             <div className="flex flex-col items-center">
-                              <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin mb-4"></div>
+                              <div className="w-16 h-16 border-4 border-white/20 border-t-white animate-spin mb-4"></div>
                               <p className="font-montserrat text-white/80">Loading form...</p>
                             </div>
                           </div>
@@ -314,11 +314,11 @@ export default function FreeTrialPage() {
                           ref={iframeRef}
                           src="https://eng.zenplanner.com/widget/form/NJB5bxSCFtwtBkC9idKb"
                           width="100%" 
-                          height="800"
+                          height="900"
                           style={{ 
                             border: 0,
                             background: 'transparent',
-                            minHeight: '800px'
+                            minHeight: '900px'
                           }} 
                           onLoad={handleIframeLoad}
                           title="Clockwork BJJ Kids Sign Up Form"
@@ -341,7 +341,7 @@ export default function FreeTrialPage() {
               transition={{ duration: 0.8 }}
               className="mt-20"
             >
-              <div className="bg-gradient-to-r from-zinc-900 to-black border border-zinc-800 rounded-lg overflow-hidden">
+              <div className="bg-gradient-to-r from-zinc-900 to-black border border-zinc-800 overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                   <div className="relative h-64 md:h-auto">
                     <Image
@@ -351,7 +351,7 @@ export default function FreeTrialPage() {
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                      <div className="bg-black/70 px-6 py-3 rounded-lg">
+                      <div className="bg-black/70 px-6 py-3">
                         <h3 className="font-bebas text-3xl text-white tracking-wider">BJJ BOOTCAMP</h3>
                       </div>
                     </div>

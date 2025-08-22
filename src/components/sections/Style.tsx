@@ -1,126 +1,150 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function Style() {
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
+
       <div className="max-w-5xl mx-auto">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="font-bebas text-5xl md:text-6xl tracking-wider mb-4 relative inline-block">
-            <span className="relative z-10">OUR STYLE</span>
-            <span className="absolute -bottom-2 left-0 w-full h-1 bg-white"></span>
-          </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-white/20 via-white to-white/20 mx-auto mt-6"></div>
+        {/* Header */}
+                  <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+          <h2 className="font-bebas text-5xl md:text-6xl tracking-wider mb-4">OUR STYLE</h2>
+          <div className="w-24 h-1 bg-white mx-auto"></div>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+        {/* Main Content - Staggered Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+          {/* Philosophy Card */}
           <motion.div
-            className="relative"
-            initial={{ opacity: 0, x: -20 }}
+            className="lg:col-span-2 relative"
+            initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 1, delay: 0.4 }}
           >
-            <div className="absolute -left-4 top-0 h-full w-1 bg-white/20"></div>
-            <div className="pl-8">
-              <h3 className="font-bebas text-3xl tracking-wide mb-6 text-white relative inline-block">
-                <span className="relative z-10">RESPECT FIRST</span>
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-white/30"></span>
-              </h3>
-              <p className="font-montserrat text-white/80 leading-relaxed mb-4">
-                At Clockwork we believe you deserve to be treated with <span className="text-white font-medium">respect</span>. 
-                We understand that sometimes the hardest part of any journey is 
-                walking through the door on that first day. That&apos;s why we 
-                offer a <span className="text-white font-medium">free trial class</span> so you can see if this is a good fit.
-              </p>
+            <div className="relative h-full bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm border border-white/10 p-8 lg:p-12">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
               
-              <div className="mt-8 mb-4">
-                <span className="font-bebas text-xl tracking-wide inline-block border-b-2 border-white/60 pb-1 text-white">OUR APPROACH</span>
-              </div>
-              <ul className="space-y-4 font-montserrat text-white/80">
-                <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
-                  <span className="leading-relaxed">Respectful and welcoming environment</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
-                  <span className="leading-relaxed">Free trial class for new students</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
-                  <span className="leading-relaxed">Focus on making you comfortable</span>
-                </li>
-              </ul>
+              <motion.h3 
+                className="font-bebas text-4xl md:text-5xl tracking-wider text-white mb-8 relative z-10"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                PHILOSOPHY & FOUNDATION
+              </motion.h3>
+              
+              <motion.div 
+                className="space-y-6 relative z-10"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+              >
+                <p className="font-montserrat text-lg md:text-xl text-white/90 leading-relaxed">
+                  At Clockwork, we believe you deserve to be treated with <span className="text-white font-semibold bg-white/10 px-2 py-1">respect</span>. 
+                  We understand that sometimes the hardest part of any journey is walking through the door on that first day.
+                </p>
+                
+                <p className="font-montserrat text-lg md:text-xl text-white/90 leading-relaxed">
+                  Our approach to building a well-developed curriculum is based on the <span className="text-white font-semibold bg-white/10 px-2 py-1">fundamentals of Jiu Jitsu</span>. 
+                  We believe that a strong foundation reinforces the core of your game with much thought and consideration.
+                </p>
+                
+                <motion.div 
+                  className="mt-8 p-6 bg-black/30 border-l-4 border-white"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 1.2 }}
+                >
+                  <p className="font-montserrat text-white/80 italic text-lg">
+                    &ldquo;We&apos;ve developed a curriculum that balances both efficiency and experience factors, 
+                    building on it, refining and improving techniques down to the essential details.&rdquo;
+                  </p>
+                </motion.div>
+              </motion.div>
             </div>
           </motion.div>
           
+          {/* Values Card */}
           <motion.div
             className="relative"
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 1, delay: 0.6 }}
           >
-            <div className="absolute -left-4 top-0 h-full w-1 bg-white/20"></div>
-            <div className="pl-8">
-              <h3 className="font-bebas text-3xl tracking-wide mb-6 text-white relative inline-block">
-                <span className="relative z-10">STRONG FOUNDATIONS</span>
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-white/30"></span>
-              </h3>
-              <p className="font-montserrat text-white/80 leading-relaxed mb-4">
-                Our approach to building a well-developed curriculum is based on 
-                the <span className="text-white font-medium">fundamentals of Jiu Jitsu</span>. We believe that a strong foundation 
-                reinforces the core of your game with much thought and 
-                consideration.
-              </p>
-              <p className="font-montserrat text-white/80 leading-relaxed mb-4">
-                We&apos;ve developed a curriculum that balances both 
-                <span className="text-white font-medium">efficiency and experience</span> factors, building on it, refining and 
-                improving techniques down to the essential details.
-              </p>
+            <div className="relative h-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-8">
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white/5"></div>
               
-              <div className="mt-8 mb-4">
-                <span className="font-bebas text-xl tracking-wide inline-block border-b-2 border-white/60 pb-1 text-white">CURRICULUM FOCUS</span>
-              </div>
-              <ul className="space-y-4 font-montserrat text-white/80">
-                <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
-                  <span className="leading-relaxed">Fundamental techniques</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
-                  <span className="leading-relaxed">Balance of efficiency and experience</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-white/80 flex-shrink-0"></div>
-                  <span className="leading-relaxed">Refined techniques with essential details</span>
-                </li>
-              </ul>
+              <motion.h3 
+                className="font-bebas text-3xl tracking-wider text-white mb-8 relative z-10"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                CORE VALUES
+              </motion.h3>
+              
+              <motion.div 
+                className="space-y-6 relative z-10"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1 }}
+              >
+                {[
+                  { title: "RESPECT FIRST", desc: "Welcoming environment for all levels" },
+                  { title: "STRONG FOUNDATIONS", desc: "Fundamental techniques mastery" },
+                  { title: "CONTINUOUS GROWTH", desc: "Refined learning experience" },
+                  { title: "COMMUNITY FOCUSED", desc: "Building lasting connections" }
+                ].map((value, index) => (
+                  <motion.div 
+                    key={value.title}
+                    className="relative group"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
+                  >
+                    <div className="flex items-start space-x-4 p-4 border border-white/10 bg-black/20 group-hover:bg-white/10 transition-all duration-300">
+                      <div className="w-2 h-2 bg-white mt-3 flex-shrink-0"></div>
+                      <div>
+                        <h4 className="font-bebas text-lg tracking-wide text-white mb-1">{value.title}</h4>
+                        <p className="font-montserrat text-white/70 text-sm">{value.desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
           </motion.div>
         </div>
         
+        {/* CTA Section */}
         <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 1, delay: 1.4 }}
         >
-          <a 
+          <Link 
             href="/free-trial" 
-            className="font-bebas inline-block bg-white text-gray-900 px-10 py-4 text-xl tracking-wider hover:bg-gray-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative overflow-hidden group"
+            className="font-bebas inline-block bg-white text-black px-10 py-4 text-2xl tracking-wider hover:bg-gray-200 transition-all duration-300"
           >
-            <span className="relative z-10">TRY A FREE CLASS</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-white via-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-          </a>
+            TRY A FREE CLASS
+          </Link>
+          
+          <motion.p 
+            className="font-montserrat text-white/70 text-lg mt-6 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.8 }}
+          >
+            Experience our welcoming community and discover why Clockwork BJJ is the perfect place to begin or continue your journey.
+          </motion.p>
         </motion.div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { motion } from 'framer-motion';
@@ -22,38 +23,67 @@ export default function AdultClassesPage() {
       try {
         const iframe = iframeRef.current;
         if (iframe && iframe.contentWindow && iframe.contentDocument) {
-          // Wait for iframe content to load fully
-          setTimeout(() => {
+          // Set up a resize observer to continuously monitor the iframe content size
+          const resizeObserver = new ResizeObserver(() => {
             try {
-              // Get the height of the form content
-              const formHeight = iframe.contentDocument?.body?.scrollHeight || 800;
-              // Add some buffer to ensure everything is visible
-              iframe.style.height = `${formHeight + 50}px`;
+              // Get the full height of the form content
+              const formHeight = iframe.contentDocument?.body?.scrollHeight || 1000;
+              // Add minimal buffer to ensure everything is visible
+              iframe.style.height = `${formHeight + 20}px`;
             } catch {
               console.log("Could not adjust iframe height");
             }
-          }, 1000);
+          });
+          
+          // Observe the iframe document body
+          if (iframe.contentDocument?.body) {
+            resizeObserver.observe(iframe.contentDocument.body);
+          }
+          
+          // Also set an initial height and check periodically
+          const initialCheck = () => {
+            try {
+              const formHeight = iframe.contentDocument?.body?.scrollHeight || 1000;
+              iframe.style.height = `${formHeight + 20}px`;
+            } catch {
+              console.log("Could not set initial iframe height");
+            }
+          };
+          
+          // Initial check after a delay to ensure content is loaded
+          setTimeout(initialCheck, 1000);
+          
+          // Set up periodic checks for the first minute to handle dynamic content loading
+          const intervalId = setInterval(initialCheck, 3000);
+          setTimeout(() => clearInterval(intervalId), 60000);
+          
+          // Return cleanup function
+          return () => {
+            resizeObserver.disconnect();
+            clearInterval(intervalId);
+          };
         }
-      } catch {
-        console.log("Error accessing iframe content");
+      } catch (error) {
+        console.log("Error setting up iframe height adjustment:", error);
       }
     };
     
     // Call the function when the iframe loads
     if (isFormLoaded) {
-      adjustIframeHeight();
+      const cleanup = adjustIframeHeight();
+      return cleanup;
     }
     
     // Add event listener for iframe load
     const iframe = iframeRef.current;
     if (iframe) {
-      iframe.addEventListener('load', adjustIframeHeight);
+      iframe.addEventListener('load', handleIframeLoad);
     }
     
     // Clean up event listener when component unmounts
     return () => {
       if (iframe) {
-        iframe.removeEventListener('load', adjustIframeHeight);
+        iframe.removeEventListener('load', handleIframeLoad);
       }
     };
   }, [isFormLoaded]);
@@ -90,13 +120,12 @@ export default function AdultClassesPage() {
         </section>
 
         {/* Main Content Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="max-w-6xl mx-auto">
             {/* Introduction */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="mb-16 text-center"
             >
@@ -112,9 +141,8 @@ export default function AdultClassesPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="bg-zinc-900 border border-zinc-800 p-8 rounded-lg"
+                className="bg-zinc-900 border border-zinc-800 p-8"
               >
                 <h3 className="font-bebas text-2xl mb-4 tracking-wide">WHITE BELT FUNDAMENTALS</h3>
                 <p className="font-montserrat mb-6 text-white/80">
@@ -134,9 +162,8 @@ export default function AdultClassesPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="bg-zinc-900 border border-zinc-800 p-8 rounded-lg"
+                className="bg-zinc-900 border border-zinc-800 p-8"
               >
                 <h3 className="font-bebas text-2xl mb-4 tracking-wide">MIXED & ADVANCED</h3>
                 <p className="font-montserrat mb-6 text-white/80">
@@ -158,7 +185,6 @@ export default function AdultClassesPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="mb-12"
             >
@@ -170,13 +196,17 @@ export default function AdultClassesPage() {
               {/* Form Container */}
               <div>
                 {/* ZenPlanner Form Iframe */}
-                <div className="w-full">
+                <div className="w-full relative">
                   {/* Loading Indicator */}
                   {!isFormLoaded && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10">
+                    <div className="h-[800px] flex items-center justify-center bg-black/50">
                       <div className="flex flex-col items-center">
-                        <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin mb-4"></div>
-                        <p className="font-montserrat text-white/80">Loading form...</p>
+                        <div className="relative w-20 h-20 mb-6">
+                          <div className="absolute top-0 left-0 w-full h-full border-4 border-white/10 animate-pulse"></div>
+                          <div className="absolute top-0 left-0 w-full h-full border-t-4 border-white animate-spin"></div>
+                        </div>
+                        <p className="font-montserrat text-xl">Loading form...</p>
+                        <p className="font-montserrat text-white/60 mt-2">Please wait while we prepare your registration</p>
                       </div>
                     </div>
                   )}
@@ -185,19 +215,46 @@ export default function AdultClassesPage() {
                     ref={iframeRef}
                     src="https://eng.zenplanner.com/widget/form/zZQW4SE3tmnobQ3E92bK"
                     width="100%" 
-                    height="800"
+                    height="900"
                     style={{ 
                       border: 0,
                       background: 'transparent',
-                      minHeight: '800px'
+                      minHeight: '900px',
+                      width: '100%',
+                      overflow: 'hidden'
                     }} 
                     onLoad={handleIframeLoad}
                     title="Clockwork BJJ Sign Up Form"
-                    className="bg-transparent"
+                    className={`bg-transparent ${!isFormLoaded ? 'hidden' : 'block'}`}
                     frameBorder="0"
                     scrolling="no"
+
                   ></iframe>
                 </div>
+              </div>
+            </motion.div>
+
+            {/* CTA Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mt-6 text-center"
+            >
+              <h3 className="font-bebas text-2xl md:text-3xl mb-4 tracking-wider">NEED MORE INFO?</h3>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link 
+                  href="/faq" 
+                  className="font-montserrat bg-transparent border-2 border-white text-white px-8 py-3 hover:bg-white hover:text-black transition-all duration-300 text-lg font-medium"
+                >
+                  VIEW FAQ
+                </Link>
+                <Link 
+                  href="/contact" 
+                  className="font-montserrat bg-white text-black px-8 py-3 hover:bg-gray-200 transition-all duration-300 text-lg font-medium"
+                >
+                  CONTACT US
+                </Link>
               </div>
             </motion.div>
 

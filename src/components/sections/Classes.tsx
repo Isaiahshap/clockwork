@@ -7,13 +7,13 @@ const classTypes = [
   {
     title: 'ADULT CLASSES',
     description: 'Classes for all levels, from beginners to advanced practitioners. Our curriculum covers self-defense, sport jiu-jitsu, and competition preparation.',
-    link: '/adult-classes',
+    link: '/adults',
     image: '/images/adultclasses.webp'
   },
   {
     title: 'KIDS PROGRAM',
     description: 'Fun and engaging classes designed specifically for children, teaching discipline, confidence, and self-defense in a safe, supportive environment.',
-    link: '/kids',
+    link: '/kids-classes',
     image: '/images/kidsclasses.webp'
   },
   {
