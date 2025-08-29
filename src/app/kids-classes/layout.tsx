@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ['/images/kidsclasses.webp']
   },
   alternates: {
-    canonical: 'https://clockworkbjj.com/kids-classes'
+    canonical: 'https://www.clockworkbjj.com/kids-classes'
   },
   robots: {
     index: true,
@@ -59,15 +59,7 @@ export default function KidsClassesLayout({
             "description": "Age-appropriate Brazilian Jiu-Jitsu program designed specifically for children",
             "provider": {
               "@type": "Organization",
-              "name": "Clockwork Brazilian Jiu-Jitsu",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "650 Broadway 2nd floor",
-                "addressLocality": "New York",
-                "addressRegion": "NY",
-                "postalCode": "10012",
-                "addressCountry": "US"
-              }
+              "name": "Clockwork Brazilian Jiu-Jitsu"
             },
             "courseMode": "onsite",
             "educationalLevel": "Beginner",

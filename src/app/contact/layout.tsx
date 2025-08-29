@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ['/images/clockwork-logo.png']
   },
   alternates: {
-    canonical: 'https://clockworkbjj.com/contact'
+    canonical: 'https://www.clockworkbjj.com/contact'
   },
   robots: {
     index: true,
@@ -48,67 +48,7 @@ export default function ContactLayout({
 }) {
   return (
     <>
-      {/* Structured Data for Local Business */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SportsActivityLocation",
-            "name": "Clockwork Brazilian Jiu-Jitsu",
-            "description": "Premier Brazilian Jiu-Jitsu academy in New York City offering classes for all skill levels",
-            "telephone": "+1-212-675-0300",
-            "email": "info@clockworkbjj.com",
-            "url": "https://clockworkbjj.com",
-            "address": {
-              "@type": "PostalAddress",
-                              "streetAddress": "650 Broadway 2nd floor",
-                "addressLocality": "New York",
-                "addressRegion": "NY",
-                "postalCode": "10012",
-              "addressCountry": "US"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "40.7266",
-              "longitude": "-73.9961"
-            },
-            "openingHoursSpecification": [
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "06:00",
-                "closes": "22:00"
-              },
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": "Saturday",
-                "opens": "10:00",
-                "closes": "16:00"
-              },
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": "Sunday",
-                "opens": "10:00",
-                "closes": "15:00"
-              }
-            ],
-            "contactPoint": [
-              {
-                "@type": "ContactPoint",
-                "telephone": "+1-212-675-0300",
-                "contactType": "customer service",
-                "availableLanguage": "English"
-              }
-            ],
-            "sameAs": [
-              "https://instagram.com/clockworkbjj",
-              "https://www.facebook.com/Clockwork.BJJ.NYC/",
-              "https://youtube.com/clockworkbjj"
-            ]
-          })
-        }}
-      />
+      {/* Contact page inherits business schema from root layout */}
       {children}
     </>
   );

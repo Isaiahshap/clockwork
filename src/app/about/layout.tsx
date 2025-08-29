@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ['/images/gym-building.jpg']
   },
   alternates: {
-    canonical: 'https://clockworkbjj.com/about'
+    canonical: 'https://www.clockworkbjj.com/about'
   },
   robots: {
     index: true,
@@ -48,59 +48,6 @@ export default function AboutLayout({
 }) {
   return (
     <>
-      {/* Structured Data for Organization */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Clockwork Brazilian Jiu-Jitsu",
-            "description": "Premier Brazilian Jiu-Jitsu academy in New York City offering world-class instruction for all skill levels",
-            "url": "https://clockworkbjj.com",
-            "logo": "https://clockworkbjj.com/images/clockwork-logo.png",
-            "image": "https://clockworkbjj.com/images/gym-building.jpg",
-            "telephone": "+1-212-675-0300",
-            "email": "info@clockworkbjj.com",
-            "address": {
-              "@type": "PostalAddress",
-                "streetAddress": "650 Broadway 2nd floor",
-                "addressLocality": "New York",
-                "addressRegion": "NY",
-                "postalCode": "10012",
-              "addressCountry": "US"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "40.7266",
-              "longitude": "-73.9961"
-            },
-            "foundingDate": "2010",
-            "founder": {
-              "@type": "Person",
-              "name": "Josh Saunders"
-            },
-            "slogan": "Technical Excellence Through Precision Training",
-            "sameAs": [
-              "https://instagram.com/clockworkbjj",
-              "https://www.facebook.com/Clockwork.BJJ.NYC/",
-              "https://youtube.com/clockworkbjj"
-            ],
-            "areaServed": {
-              "@type": "City",
-              "name": "New York",
-              "addressRegion": "NY"
-            },
-            "knowsAbout": [
-              "Brazilian Jiu-Jitsu",
-              "Martial Arts",
-              "Self Defense",
-              "Grappling",
-              "Fitness Training"
-            ]
-          })
-        }}
-      />
       {children}
     </>
   );

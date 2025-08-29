@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ['/images/adultclasses.webp']
   },
   alternates: {
-    canonical: 'https://clockworkbjj.com/adults'
+    canonical: 'https://www.clockworkbjj.com/adults'
   },
   robots: {
     index: true,
@@ -59,15 +59,7 @@ export default function AdultsLayout({
             "description": "Comprehensive Brazilian Jiu-Jitsu program for adults of all skill levels",
             "provider": {
               "@type": "Organization",
-              "name": "Clockwork Brazilian Jiu-Jitsu",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "650 Broadway 2nd floor",
-                "addressLocality": "New York",
-                "addressRegion": "NY",
-                "postalCode": "10012",
-                "addressCountry": "US"
-              }
+              "name": "Clockwork Brazilian Jiu-Jitsu"
             },
             "courseMode": "onsite",
             "educationalLevel": ["Beginner", "Intermediate", "Advanced"],

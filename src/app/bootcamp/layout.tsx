@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ['/images/hero-bg3.webp']
   },
   alternates: {
-    canonical: 'https://clockworkbjj.com/bootcamp'
+    canonical: 'https://www.clockworkbjj.com/bootcamp'
   },
   robots: {
     index: true,
@@ -59,27 +59,12 @@ export default function BootcampLayout({
             "description": "Intensive Brazilian Jiu-Jitsu training program designed for accelerated skill development",
             "organizer": {
               "@type": "Organization",
-              "name": "Clockwork Brazilian Jiu-Jitsu",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "650 Broadway 2nd floor",
-                "addressLocality": "New York",
-                "addressRegion": "NY",
-                "postalCode": "10012",
-                "addressCountry": "US"
-              }
+              "name": "Clockwork Brazilian Jiu-Jitsu"
             },
             "location": {
               "@type": "Place",
-              "name": "Clockwork Brazilian Jiu-Jitsu",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "650 Broadway 2nd floor",
-                "addressLocality": "New York",
-                "addressRegion": "NY",
-                "postalCode": "10012",
-                "addressCountry": "US"
-              }
+              "name": "Clockwork BJJ",
+              "address": "650 Broadway, 2nd Floor\nNew York City, NY 10012\nUSA"
             },
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
             "eventStatus": "https://schema.org/EventScheduled",

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 // Base URL - update this to your production domain
-const baseUrl = 'https://clockworkbjj.com'
+const baseUrl = 'https://www.clockworkbjj.com'
 
 // Static pages configuration
 const staticPages = [
@@ -54,6 +54,26 @@ const staticPages = [
     url: '/bootcamp',
     priority: 0.7,
     changeFrequency: 'weekly' as const,
+  },
+  {
+    url: '/instructors',
+    priority: 0.8,
+    changeFrequency: 'monthly' as const,
+  },
+  {
+    url: '/privacy-policy',
+    priority: 0.3,
+    changeFrequency: 'yearly' as const,
+  },
+  {
+    url: '/terms',
+    priority: 0.3,
+    changeFrequency: 'yearly' as const,
+  },
+  {
+    url: '/accessibility',
+    priority: 0.3,
+    changeFrequency: 'yearly' as const,
   },
 ]
 

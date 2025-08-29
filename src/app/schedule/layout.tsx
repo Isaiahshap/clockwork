@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ['/images/clockwork-logo.png']
   },
   alternates: {
-    canonical: 'https://clockworkbjj.com/schedule'
+    canonical: 'https://www.clockworkbjj.com/schedule'
   },
   robots: {
     index: true,
@@ -104,15 +104,7 @@ export default function ScheduleLayout({
             ],
             "organizer": {
               "@type": "Organization",
-              "name": "Clockwork Brazilian Jiu-Jitsu",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "650 Broadway 2nd floor",
-                "addressLocality": "New York",
-                "addressRegion": "NY",
-                "postalCode": "10012",
-                "addressCountry": "US"
-              }
+              "name": "Clockwork Brazilian Jiu-Jitsu"
             }
           })
         }}

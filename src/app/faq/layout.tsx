@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ['/images/clockwork-logo.png']
   },
   alternates: {
-    canonical: 'https://clockworkbjj.com/faq'
+    canonical: 'https://www.clockworkbjj.com/faq'
   },
   robots: {
     index: true,

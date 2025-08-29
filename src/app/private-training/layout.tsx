@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ['/images/private.webp']
   },
   alternates: {
-    canonical: 'https://clockworkbjj.com/private-training'
+    canonical: 'https://www.clockworkbjj.com/private-training'
   },
   robots: {
     index: true,
@@ -59,15 +59,7 @@ export default function PrivateTrainingLayout({
             "description": "One-on-one personalized Brazilian Jiu-Jitsu instruction for accelerated learning",
             "provider": {
               "@type": "Organization",
-              "name": "Clockwork Brazilian Jiu-Jitsu",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "650 Broadway 2nd floor",
-                "addressLocality": "New York",
-                "addressRegion": "NY",
-                "postalCode": "10012",
-                "addressCountry": "US"
-              }
+              "name": "Clockwork Brazilian Jiu-Jitsu"
             },
             "serviceType": "Personal Training",
             "areaServed": {

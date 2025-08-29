@@ -15,64 +15,8 @@ export default function PrivateTrainingPage() {
     setIsFormLoaded(true);
   };
   
-  // Handler to adjust iframe height based on content
+  // Simplified useEffect for iframe loading
   useEffect(() => {
-    // Function to adjust iframe height
-    const adjustIframeHeight = () => {
-      try {
-        const iframe = iframeRef.current;
-        if (iframe && iframe.contentWindow && iframe.contentDocument) {
-          // Set up a resize observer to continuously monitor the iframe content size
-          const resizeObserver = new ResizeObserver(() => {
-            try {
-              // Get the full height of the form content
-              const formHeight = iframe.contentDocument?.body?.scrollHeight || 1000;
-              // Add generous buffer to ensure everything is visible
-              iframe.style.height = `${formHeight + 100}px`;
-            } catch {
-              console.log("Could not adjust iframe height");
-            }
-          });
-          
-          // Observe the iframe document body
-          if (iframe.contentDocument?.body) {
-            resizeObserver.observe(iframe.contentDocument.body);
-          }
-          
-          // Also set an initial height and check periodically
-          const initialCheck = () => {
-            try {
-              const formHeight = iframe.contentDocument?.body?.scrollHeight || 1000;
-              iframe.style.height = `${formHeight + 100}px`;
-            } catch {
-              console.log("Could not set initial iframe height");
-            }
-          };
-          
-          // Initial check after a delay to ensure content is loaded
-          setTimeout(initialCheck, 1000);
-          
-          // Set up periodic checks for the first minute to handle dynamic content loading
-          const intervalId = setInterval(initialCheck, 3000);
-          setTimeout(() => clearInterval(intervalId), 60000);
-          
-          // Return cleanup function
-          return () => {
-            resizeObserver.disconnect();
-            clearInterval(intervalId);
-          };
-        }
-      } catch (error) {
-        console.log("Error setting up iframe height adjustment:", error);
-      }
-    };
-    
-    // Call the function when the iframe loads
-    if (isFormLoaded) {
-      const cleanup = adjustIframeHeight();
-      return cleanup;
-    }
-    
     // Add event listener for iframe load
     const iframe = iframeRef.current;
     if (iframe) {
@@ -85,7 +29,7 @@ export default function PrivateTrainingPage() {
         iframe.removeEventListener('load', handleIframeLoad);
       }
     };
-  }, [isFormLoaded]);
+  }, []);
 
   return (
     <>
@@ -144,10 +88,10 @@ export default function PrivateTrainingPage() {
               <h3 className="font-bebas text-2xl mb-6 tracking-wide text-center">SCHEDULE YOUR PRIVATE TRAINING SESSION</h3>
               
               {/* Form Container */}
-              <div className="relative">
+              <div className="relative h-[600px] border border-white/10 rounded-lg overflow-hidden">
                 {/* Loading Indicator */}
                 {!isFormLoaded && (
-                  <div className="h-[1200px] flex items-center justify-center bg-black/50">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-10">
                     <div className="flex flex-col items-center">
                       <div className="relative w-24 h-24 mb-8">
                         <div className="absolute top-0 left-0 w-full h-full border-4 border-white/10 animate-pulse"></div>
@@ -163,24 +107,26 @@ export default function PrivateTrainingPage() {
                   ref={iframeRef}
                   src="https://app.acuityscheduling.com/schedule/38266b1c/appointment/59814920?appointmentTypeIds[]=59814920"
                   width="100%" 
-                  height="900"
+                  height="100%"
                   style={{ 
                     border: 0,
                     background: 'transparent',
-                    minHeight: '900px',
                     width: '100%',
-                    overflow: 'hidden',
-                    boxShadow: '0 0 0 1px rgba(255,255,255,0.05)'
+                    height: '100%'
                   }} 
                   onLoad={handleIframeLoad}
                   title="Clockwork BJJ Private Training Scheduler"
                   className={`bg-transparent ${!isFormLoaded ? 'hidden' : 'block'}`}
                   frameBorder="0"
-                  scrolling="no"
-
+                  scrolling="yes"
                   allow="fullscreen"
                 ></iframe>
               </div>
+              
+              {/* Scroll Hint */}
+              <p className="text-white/60 text-sm text-center mt-4">
+                Scroll within the form above to view all available options
+              </p>
             </motion.div>
 
             {/* Content Sections */}

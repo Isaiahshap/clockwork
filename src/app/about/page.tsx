@@ -53,7 +53,7 @@ export default function AboutPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                   <p className="font-montserrat text-lg mb-6 leading-relaxed">
-                    Founded in 2017, Clockwork BJJ has been a cornerstone of the New York City jiu-jitsu community for over 8 years. What started as a small group of dedicated practitioners has grown into one of the most respected academies in downtown Manhattan.
+                    Founded in 2009, Clockwork BJJ has been a cornerstone of the New York City jiu-jitsu community for over 16 years. What started as a small group of dedicated practitioners has grown into one of the most respected academies in downtown Manhattan.
                   </p>
                   <p className="font-montserrat text-lg mb-6 leading-relaxed font-bold">
                     Our name &quot;Clockwork&quot; represents the precision and consistency we bring to the art of jiu-jitsu.
