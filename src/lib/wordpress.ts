@@ -114,23 +114,27 @@ export interface WordPressTag {
  */
 export async function getAllPosts(limit?: number): Promise<WordPressPost[]> {
   try {
-    const url = new URL(`${WORDPRESS_API_URL}/posts`);
-    url.searchParams.append('_embed', '1');
-    url.searchParams.append('status', 'publish');
+    // Use Next.js API route to avoid CORS issues
+    const url = new URL('/api/blog/posts', typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
     if (limit) {
-      url.searchParams.append('per_page', limit.toString());
+      url.searchParams.append('limit', limit.toString());
     }
 
+    console.log('Fetching posts via API route:', url.toString());
+
     const response = await fetch(url.toString(), {
-      headers: getAuthHeaders(),
       next: { revalidate: 300 }, // Revalidate every 5 minutes
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch posts: ${response.status}`);
+      const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+      console.error('API Error Response:', errorData);
+      throw new Error(`Failed to fetch posts: ${response.status} - ${errorData.error || 'Unknown error'}`);
     }
 
-    return await response.json();
+    const data = await response.json();
+    console.log('Fetched posts count:', data.length);
+    return data;
   } catch (error) {
     console.error('Error fetching posts:', error);
     return [];
@@ -142,22 +146,27 @@ export async function getAllPosts(limit?: number): Promise<WordPressPost[]> {
  */
 export async function getPostBySlug(slug: string): Promise<WordPressPost | null> {
   try {
-    const url = new URL(`${WORDPRESS_API_URL}/posts`);
-    url.searchParams.append('slug', slug);
-    url.searchParams.append('_embed', '1');
-    url.searchParams.append('status', 'publish');
+    // Use Next.js API route to avoid CORS issues
+    const url = new URL(`/api/blog/post/${slug}`, typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
+
+    console.log('Fetching post via API route:', url.toString());
 
     const response = await fetch(url.toString(), {
-      headers: getAuthHeaders(),
       next: { revalidate: 300 }, // Revalidate every 5 minutes
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch post: ${response.status}`);
+      if (response.status === 404) {
+        return null;
+      }
+      const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+      console.error('API Error Response:', errorData);
+      throw new Error(`Failed to fetch post: ${response.status} - ${errorData.error || 'Unknown error'}`);
     }
 
-    const posts = await response.json();
-    return posts.length > 0 ? posts[0] : null;
+    const data = await response.json();
+    console.log('Fetched post:', data.title?.rendered || 'No title');
+    return data;
   } catch (error) {
     console.error('Error fetching post:', error);
     return null;
