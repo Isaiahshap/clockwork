@@ -12,6 +12,7 @@ const navStructure = [
     href: '/about',
     dropdown: [
       { name: 'ABOUT US', href: '/about' },
+      { name: 'BLOG', href: '/about/blog' },
       { name: 'INSTRUCTORS', href: '/instructors' },
       { name: 'FAQ', href: '/faq' },
     ]

@@ -12,6 +12,16 @@ export default function robots(): MetadataRoute.Robots {
         '/admin/',
         '/_next/',
         '/private/',
+        
+        // Environment and configuration files
+        '/.env*',
+        '/.env.local',
+        '/.env.development',
+        '/.env.production',
+        '/package*.json',
+        '/next.config.*',
+        '/tailwind.config.*',
+        '/tsconfig.*',
       ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
