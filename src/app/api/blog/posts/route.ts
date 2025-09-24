@@ -49,6 +49,22 @@ export async function GET(request: Request) {
       );
     }
 
+    // Check content type before parsing as JSON
+    const contentType = response.headers.get('content-type');
+    console.log('Response content-type:', contentType);
+
+    if (!contentType?.includes('application/json')) {
+      const responseText = await response.text();
+      console.error('Expected JSON but received:', contentType, 'Content:', responseText.substring(0, 200));
+      return NextResponse.json(
+        { 
+          error: 'WordPress API returned non-JSON response', 
+          details: `Content-Type: ${contentType}. Response: ${responseText.substring(0, 200)}...` 
+        },
+        { status: 502 }
+      );
+    }
+
     const data = await response.json();
     console.log('Server-side fetched posts count:', data.length);
 
