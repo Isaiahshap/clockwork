@@ -110,9 +110,12 @@ export default function BlogPostPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="md:pt-16">
         {/* Hero Section with Featured Image */}
-        <section className="relative h-[50vh] w-full overflow-hidden" style={{ marginTop: 'var(--navbar-height)' }}>
+        <section 
+          className="relative h-[50vh] w-full overflow-hidden" 
+          style={{ marginTop: 'var(--navbar-height)' }}
+        >
           {featuredImage ? (
             <Image
               src={featuredImage.url}
