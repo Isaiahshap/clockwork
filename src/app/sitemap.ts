@@ -81,6 +81,11 @@ const staticPages = [
     priority: 0.8,
     changeFrequency: 'weekly' as const,
   },
+  {
+    url: '/about/reviews',
+    priority: 0.8,
+    changeFrequency: 'monthly' as const,
+  },
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

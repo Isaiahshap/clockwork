@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const reviews = [
   {
@@ -158,22 +159,38 @@ export default function Reviews() {
             </button>
           </div>
 
-          {/* Google Link */}
+          {/* Links */}
           <motion.div
-            className="text-center mt-8"
+            className="text-center mt-8 space-y-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <a
-              href="https://g.page/r/CckcuTRhONc2EBM/review"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 font-bebas text-lg tracking-wider text-white hover:text-gray-300 transition-colors duration-200 border-b-2 border-white/20 hover:border-white/40 pb-1"
-            >
-              <Image src="/images/google.png" alt="Google" width={24} height={24} className="w-6 h-6" />
-              REVIEW US ON GOOGLE
-            </a>
+            {/* See All Reviews Link */}
+            <div>
+              <Link
+                href="/about/reviews"
+                className="inline-flex items-center gap-2 font-bebas text-xl tracking-wider text-white hover:text-gray-300 transition-colors duration-200 border-b-2 border-white/40 hover:border-white/60 pb-1"
+              >
+                SEE MORE REVIEWS
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Google Review Link */}
+            <div>
+              <a
+                href="https://g.page/r/CckcuTRhONc2EBM/review"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 font-bebas text-lg tracking-wider text-white hover:text-gray-300 transition-colors duration-200 border-b-2 border-white/20 hover:border-white/40 pb-1"
+              >
+                <Image src="/images/google.png" alt="Google" width={24} height={24} className="w-6 h-6" />
+                REVIEW US ON GOOGLE
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>
