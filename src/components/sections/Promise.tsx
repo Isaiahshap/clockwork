@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Promise() {
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-black to-gray-900 text-white">
+    <section className="py-24 px-4 bg-gradient-to-b from-black via-zinc-900 to-zinc-800 text-white">
       <div className="max-w-5xl mx-auto">
         <motion.div
           className="text-center mb-16"

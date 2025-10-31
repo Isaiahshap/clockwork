@@ -33,7 +33,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70 z-1"></div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mt-20 sm:mt-0">
         <motion.div
           className="mb-2 md:mb-3"
           initial={{ opacity: 0, y: 20 }}
@@ -65,13 +65,19 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="relative"
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center"
         >
           <Link 
             href="/free-trial" 
-            className="font-bebas inline-block bg-white text-black px-10 py-5 text-2xl tracking-wider hover:bg-gray-200 transition-all duration-300 relative z-10 border border-transparent hover:border-white/20"
+            className="font-bebas inline-block bg-white text-black px-10 py-5 text-2xl tracking-wider hover:bg-gray-200 transition-all duration-300 border-2 border-black w-full sm:w-auto text-center whitespace-nowrap"
           >
             START YOUR FREE TRIAL
+          </Link>
+          <Link 
+            href="/bootcamp" 
+            className="font-bebas inline-block bg-black text-white px-10 py-5 text-2xl tracking-wider border-2 border-white hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-auto text-center whitespace-nowrap"
+          >
+            START OUR BJJ BOOTCAMP
           </Link>
         </motion.div>
       </div>

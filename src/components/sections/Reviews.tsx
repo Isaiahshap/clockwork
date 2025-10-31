@@ -56,23 +56,23 @@ export default function Reviews() {
   };
 
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-black border-t border-white/10">
+    <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-bebas text-4xl md:text-5xl lg:text-6xl tracking-wider mb-4">
+          <h2 className="font-bebas text-4xl md:text-5xl lg:text-6xl tracking-wider mb-6">
             OVER 290 5 STAR REVIEWS ON GOOGLE
           </h2>
-          <div className="flex justify-center gap-1 mb-6">
+          <div className="flex justify-center gap-2 mb-6">
             {[...Array(5)].map((_, i) => (
               <svg
                 key={i}
-                className="w-8 h-8 md:w-10 md:h-10 text-yellow-400"
+                className="w-10 h-10 md:w-12 md:h-12 text-yellow-400"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -83,9 +83,9 @@ export default function Reviews() {
         </motion.div>
 
         {/* Carousel */}
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-5xl mx-auto">
           {/* Review Card */}
-          <div className="relative min-h-[300px] md:min-h-[250px]">
+          <div className="relative transition-all duration-700 ease-in-out">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -93,14 +93,14 @@ export default function Reviews() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.5 }}
-                className="bg-zinc-900 border border-white/10 p-6 md:p-8"
+                className="border-4 border-white bg-black p-8 md:p-12"
               >
                 {/* Stars */}
-                <div className="flex gap-1 mb-4">
+                <div className="flex gap-1 mb-6">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="w-5 h-5 text-yellow-400"
+                      className="w-6 h-6 text-yellow-400"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -110,12 +110,12 @@ export default function Reviews() {
                 </div>
 
                 {/* Review Text */}
-                <p className="font-montserrat text-base md:text-lg leading-relaxed text-gray-100 mb-6">
+                <p className="font-montserrat text-lg md:text-xl leading-relaxed text-white mb-8">
                   &ldquo;{reviews[currentIndex].text}&rdquo;
                 </p>
 
                 {/* Reviewer Name */}
-                <p className="font-bebas text-xl md:text-2xl tracking-wide text-white">
+                <p className="font-bebas text-2xl md:text-3xl tracking-wide text-white">
                   — {reviews[currentIndex].name}
                 </p>
               </motion.div>
@@ -123,25 +123,25 @@ export default function Reviews() {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex items-center justify-between mt-8">
+          <div className="flex items-center justify-between mt-10">
             <button
               onClick={prevReview}
-              className="p-3 bg-white text-black hover:bg-gray-200 transition-colors duration-200"
+              className="p-4 border-3 border-white bg-black text-white hover:bg-white hover:text-black transition-all duration-200"
               aria-label="Previous review"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
 
             {/* Dots */}
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               {reviews.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToReview(index)}
-                  className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-200 ${
-                    index === currentIndex ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/50'
+                  className={`h-3 rounded-full transition-all duration-300 border-2 border-white ${
+                    index === currentIndex ? 'bg-white w-12' : 'bg-transparent w-3 hover:bg-white/50'
                   }`}
                   aria-label={`Go to review ${index + 1}`}
                 />
@@ -150,47 +150,43 @@ export default function Reviews() {
 
             <button
               onClick={nextReview}
-              className="p-3 bg-white text-black hover:bg-gray-200 transition-colors duration-200"
+              className="p-4 border-3 border-white bg-black text-white hover:bg-white hover:text-black transition-all duration-200"
               aria-label="Next review"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </button>
           </div>
 
           {/* Links */}
           <motion.div
-            className="text-center mt-8 space-y-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
             {/* See All Reviews Link */}
-            <div>
-              <Link
-                href="/about/reviews"
-                className="inline-flex items-center gap-2 font-bebas text-xl tracking-wider text-white hover:text-gray-300 transition-colors duration-200 border-b-2 border-white/40 hover:border-white/60 pb-1"
-              >
-                SEE MORE REVIEWS
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
+            <Link
+              href="/about/reviews"
+              className="inline-flex items-center gap-3 font-bebas text-xl tracking-wider text-white border-3 border-white px-8 py-4 hover:bg-white hover:text-black transition-all duration-300 group"
+            >
+              SEE MORE REVIEWS
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
 
             {/* Google Review Link */}
-            <div>
-              <a
-                href="https://g.page/r/CckcuTRhONc2EBM/review"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 font-bebas text-lg tracking-wider text-white hover:text-gray-300 transition-colors duration-200 border-b-2 border-white/20 hover:border-white/40 pb-1"
-              >
-                <Image src="/images/google.png" alt="Google" width={24} height={24} className="w-6 h-6" />
-                REVIEW US ON GOOGLE
-              </a>
-            </div>
+            <a
+              href="https://g.page/r/CckcuTRhONc2EBM/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 font-bebas text-xl tracking-wider border-3 border-white bg-white text-black px-8 py-4 hover:bg-black hover:text-white transition-all duration-300 group"
+            >
+              <Image src="/images/google.png" alt="Google" width={24} height={24} className="w-6 h-6" />
+              REVIEW US ON GOOGLE
+            </a>
           </motion.div>
         </div>
       </div>

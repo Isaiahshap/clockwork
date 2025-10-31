@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   return (
@@ -92,6 +93,16 @@ export default function Footer() {
                     <li>
                       <Link href="/about" className="text-white/80 hover:text-white transition-colors">
                         ABOUT US
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/about/blog" className="text-white/80 hover:text-white transition-colors">
+                        BLOG
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/about/reviews" className="text-white/80 hover:text-white transition-colors">
+                        REVIEWS
                       </Link>
                     </li>
                     <li>
@@ -203,6 +214,82 @@ export default function Footer() {
             Made while shrimping — by <a href="https://yeshaya.dev" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors underline-offset-2 hover:underline">Yeshaya.dev</a>
           </p>
         </div>
+      </div>
+      
+      {/* BJJ Wisdom Marquee */}
+      <div className="relative overflow-hidden bg-black border-t border-white/10 py-2">
+        <motion.div
+          className="flex whitespace-nowrap items-center"
+          animate={{
+            x: [0, -50 + '%'],
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 40,
+              ease: "linear",
+            },
+          }}
+        >
+          {[
+            "DESTROY EGO",
+            "INCREASE SENSE OF REALITY",
+            "TAP EARLY TAP OFTEN",
+            "RESPECT THE TAP",
+            "FLOW BEFORE FORCE",
+            "LEAVE YOUR EGO AT THE DOOR",
+            "OSS",
+            "TRAIN HARD REST HARDER",
+            "EMBRACE THE STRUGGLE",
+            "TRUST THE PROCESS",
+            "POSITION BEFORE SUBMISSION",
+            "BREATHE UNDER PRESSURE",
+            "SHRIMP YOUR WAY TO FREEDOM",
+            "NO DAYS OFF THE MAT",
+            "TECHNIQUE CONQUERS STRENGTH",
+            "WHITE BELT MINDSET BLACK BELT HEART",
+            "PRESSURE MAKES DIAMONDS",
+            "ROLL LEARN REPEAT",
+            "BE WATER MY FRIEND",
+            "COMFORT IS THE ENEMY",
+            "SURVIVE THEN THRIVE",
+            "GRIPS ON PROBLEMS OFF",
+            "KEEP CALM AND TRIANGLE ON",
+            "EARN YOUR STRIPES",
+            "DESTROY EGO",
+            "INCREASE SENSE OF REALITY",
+            "TAP EARLY TAP OFTEN",
+            "RESPECT THE TAP",
+            "FLOW BEFORE FORCE",
+            "LEAVE YOUR EGO AT THE DOOR",
+            "OSS",
+            "TRAIN HARD REST HARDER",
+            "EMBRACE THE STRUGGLE",
+            "TRUST THE PROCESS",
+            "POSITION BEFORE SUBMISSION",
+            "BREATHE UNDER PRESSURE",
+            "SHRIMP YOUR WAY TO FREEDOM",
+            "NO DAYS OFF THE MAT",
+            "TECHNIQUE CONQUERS STRENGTH",
+            "WHITE BELT MINDSET BLACK BELT HEART",
+            "PRESSURE MAKES DIAMONDS",
+            "ROLL LEARN REPEAT",
+            "BE WATER MY FRIEND",
+            "COMFORT IS THE ENEMY",
+            "SURVIVE THEN THRIVE",
+            "GRIPS ON PROBLEMS OFF",
+            "KEEP CALM AND TRIANGLE ON",
+            "EARN YOUR STRIPES"
+          ].map((message, index) => (
+            <div key={index} className="flex items-center">
+              <span className="font-bebas text-sm tracking-wide text-white/60 px-4">
+                {message}
+              </span>
+              <div className="w-1 h-1 rounded-full bg-white/40"></div>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </footer>
   );

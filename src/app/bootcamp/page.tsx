@@ -69,6 +69,34 @@ export default function BootcampPage() {
               </p>
             </motion.div>
 
+            {/* Urgency Notice */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-16 max-w-4xl mx-auto"
+            >
+              <div className="bg-gradient-to-r from-red-900/30 to-orange-900/30 border-2 border-red-500/50 p-8">
+                <div className="text-center">
+                  <div className="inline-block bg-red-500/20 px-4 py-2 mb-4">
+                    <span className="font-bebas text-xl tracking-wider text-red-400">⚠️ SPOTS FILL FAST</span>
+                  </div>
+                  <h3 className="font-bebas text-3xl md:text-4xl mb-4 tracking-wide">OUR NOVEMBER BOOTCAMP SOLD OUT WITHIN A FEW WEEKS</h3>
+                  <p className="font-montserrat text-lg mb-6">
+                    Our January bootcamp is now available for registration below. Don&apos;t miss your chance to start your BJJ journey in the new year!
+                  </p>
+                  <div className="flex justify-center">
+                    <div className="inline-flex items-center bg-white/10 px-6 py-3 border border-white/20">
+                      <svg className="w-6 h-6 mr-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"></path>
+                      </svg>
+                      <span className="font-bebas text-xl tracking-wider">SIGN UP NOW TO SECURE YOUR SPOT</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Bootcamp Details */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
               <motion.div

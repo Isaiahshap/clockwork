@@ -76,7 +76,7 @@ export default function ReviewsPage() {
       <main>
         {/* Hero Section */}
         <section 
-          className="relative h-[40vh] w-full overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center" 
+          className="relative h-[40vh] w-full overflow-hidden bg-gradient-to-br from-black via-zinc-800 to-zinc-950 flex items-center justify-center" 
           style={{ marginTop: 'var(--navbar-height)' }}
         >
           <motion.h1 

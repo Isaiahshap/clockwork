@@ -1,8 +1,10 @@
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
+import Marquee from "@/components/sections/Marquee";
 import Reviews from "@/components/sections/Reviews";
 import About from "@/components/sections/About";
 import Classes from "@/components/sections/Classes";
+import BootcampPromo from "@/components/sections/BootcampPromo";
 import Instructors from "@/components/sections/Instructors";
 import Contact from "@/components/sections/Contact";
 import Promise from "@/components/sections/Promise";
@@ -15,9 +17,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Marquee />
         <Reviews />
         <About />
         <Classes />
+        <BootcampPromo />
         <Instructors />
         <Promise />
         <Style />

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Contact() {
   return (
-    <section id="find-us" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
+    <section id="find-us" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-16"

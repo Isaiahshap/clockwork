@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Style() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-zinc-800 via-zinc-800 to-zinc-900 text-white">
 
       <div className="max-w-5xl mx-auto">
         {/* Header */}
