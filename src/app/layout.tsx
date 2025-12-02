@@ -100,6 +100,13 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* Zen Planner External Tracking */}
+        <Script
+          src="https://eng.zenplanner.com/js/external-tracking.js"
+          data-tracking-id="tk_42bfc83760b5468da88a55c5733cca15"
+          strategy="afterInteractive"
+        />
+
         {/* Structured Data: Match existing live schema (three separate scripts) */}
         <script
           type="application/ld+json"

@@ -48,7 +48,71 @@ export default function AdultClassesPage() {
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isModalOpen]);
-  
+
+  // GA4 Event Tracking for Adult Form
+  useEffect(() => {
+    const gtag = typeof window !== 'undefined' ? (window as Window & { gtag?: (...args: unknown[]) => void }).gtag : undefined;
+    if (!gtag) return;
+
+    // Helper to get traffic source
+    const getTrafficSource = () => {
+      const referrer = document.referrer;
+      if (!referrer) return 'direct';
+
+      if (referrer.includes('google.com')) return 'organic_google';
+      if (referrer.includes('bing.com')) return 'organic_bing';
+      if (referrer.includes('yahoo.com')) return 'organic_yahoo';
+      if (referrer.includes('duckduckgo.com')) return 'organic_duckduckgo';
+
+      return 'referral';
+    };
+
+    const trafficSource = getTrafficSource();
+
+    // Track form view when iframe loads
+    if (isFormLoaded) {
+      gtag('event', 'form_view', {
+        form_type: 'adult_signup',
+        form_location: 'adults-page',
+        traffic_source: trafficSource,
+        page_path: window.location.pathname
+      });
+    }
+
+    // Track iframe interaction
+    const handleWindowBlur = () => {
+      const iframe = iframeRef.current;
+      if (iframe && document.activeElement === iframe) {
+        gtag('event', 'form_interaction', {
+          form_type: 'adult_signup',
+          form_location: 'adults-page',
+          traffic_source: trafficSource,
+          page_path: window.location.pathname
+        });
+      }
+    };
+
+    window.addEventListener('blur', handleWindowBlur);
+
+    // Track engagement after 30 seconds
+    const engagementTimer = setTimeout(() => {
+      if (isFormLoaded) {
+        gtag('event', 'form_engagement', {
+          form_type: 'adult_signup',
+          form_location: 'adults-page',
+          traffic_source: trafficSource,
+          engagement_time: '30s',
+          page_path: window.location.pathname
+        });
+      }
+    }, 30000);
+
+    return () => {
+      window.removeEventListener('blur', handleWindowBlur);
+      clearTimeout(engagementTimer);
+    };
+  }, [isFormLoaded]);
+
   // Handler to adjust iframe height based on content
   useEffect(() => {
     // Function to adjust iframe height
@@ -67,12 +131,12 @@ export default function AdultClassesPage() {
               console.log("Could not adjust iframe height");
             }
           });
-          
+
           // Observe the iframe document body
           if (iframe.contentDocument?.body) {
             resizeObserver.observe(iframe.contentDocument.body);
           }
-          
+
           // Also set an initial height and check periodically
           const initialCheck = () => {
             try {
@@ -82,14 +146,14 @@ export default function AdultClassesPage() {
               console.log("Could not set initial iframe height");
             }
           };
-          
+
           // Initial check after a delay to ensure content is loaded
           setTimeout(initialCheck, 1000);
-          
+
           // Set up periodic checks for the first minute to handle dynamic content loading
           const intervalId = setInterval(initialCheck, 3000);
           setTimeout(() => clearInterval(intervalId), 60000);
-          
+
           // Return cleanup function
           return () => {
             resizeObserver.disconnect();
@@ -100,19 +164,19 @@ export default function AdultClassesPage() {
         console.log("Error setting up iframe height adjustment:", error);
       }
     };
-    
+
     // Call the function when the iframe loads
     if (isFormLoaded) {
       const cleanup = adjustIframeHeight();
       return cleanup;
     }
-    
+
     // Add event listener for iframe load
     const iframe = iframeRef.current;
     if (iframe) {
       iframe.addEventListener('load', handleIframeLoad);
     }
-    
+
     // Clean up event listener when component unmounts
     return () => {
       if (iframe) {
@@ -135,13 +199,13 @@ export default function AdultClassesPage() {
             priority
             className="object-cover"
           />
-          
+
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/60"></div>
-          
+
           {/* Hero Content */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <motion.h1 
+            <motion.h1
               className="font-bebas text-5xl md:text-7xl lg:text-8xl text-white tracking-wider text-center"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -184,7 +248,7 @@ export default function AdultClassesPage() {
                   </p>
                 </div>
                 <div className="aspect-video w-full overflow-hidden relative shadow-xl shadow-black/30 border border-white/10 mt-auto">
-                  <Image 
+                  <Image
                     src="/images/Clockwork7.webp"
                     alt="Clockwork BJJ Fundamentals"
                     fill
@@ -207,7 +271,7 @@ export default function AdultClassesPage() {
                   </p>
                 </div>
                 <div className="aspect-video w-full overflow-hidden relative shadow-xl shadow-black/30 border border-white/10 mt-auto">
-                  <Image 
+                  <Image
                     src="/images/Clockwork9.webp"
                     alt="Clockwork BJJ Intermediate Classes"
                     fill
@@ -215,7 +279,7 @@ export default function AdultClassesPage() {
                   />
                 </div>
               </motion.div>
-              
+
               {/* Mixed & Advanced */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -230,7 +294,7 @@ export default function AdultClassesPage() {
                   </p>
                 </div>
                 <div className="aspect-video w-full overflow-hidden relative shadow-xl shadow-black/30 border border-white/10 mt-auto">
-                  <Image 
+                  <Image
                     src="/images/Clockwork8.webp"
                     alt="Clockwork BJJ Advanced Classes"
                     fill
@@ -252,7 +316,7 @@ export default function AdultClassesPage() {
               <p className="font-montserrat text-lg max-w-3xl mx-auto mb-12 text-center">
                 Fill out the form below to sign up for a free trial class and experience Clockwork BJJ firsthand.
               </p>
-              
+
               {/* Form Container */}
               <div>
                 {/* ZenPlanner Form Iframe */}
@@ -270,19 +334,19 @@ export default function AdultClassesPage() {
                       </div>
                     </div>
                   )}
-                  
-                  <iframe 
+
+                  <iframe
                     ref={iframeRef}
                     src="https://eng.zenplanner.com/widget/form/zZQW4SE3tmnobQ3E92bK"
-                    width="100%" 
+                    width="100%"
                     height="900"
-                    style={{ 
+                    style={{
                       border: 0,
                       background: 'transparent',
                       minHeight: '900px',
                       width: '100%',
                       overflow: 'hidden'
-                    }} 
+                    }}
                     onLoad={handleIframeLoad}
                     title="Clockwork BJJ Sign Up Form"
                     className={`bg-transparent ${!isFormLoaded ? 'hidden' : 'block'}`}
@@ -303,24 +367,24 @@ export default function AdultClassesPage() {
             >
               <h3 className="font-bebas text-2xl md:text-3xl mb-6 tracking-wider">READY TO DROP IN?</h3>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <button 
+                <button
                   onClick={openModal}
                   className="font-montserrat bg-blue-600 text-white px-8 py-4 hover:bg-blue-700 transition-all duration-300 text-lg font-medium tracking-wide"
                 >
                   SCHEDULE A DROP IN CLASS
                 </button>
               </div>
-              
+
               <h3 className="font-bebas text-2xl md:text-3xl mb-4 tracking-wider">NEED MORE INFO?</h3>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/faq" 
+                <Link
+                  href="/faq"
                   className="font-montserrat bg-transparent border-2 border-white text-white px-8 py-3 hover:bg-white hover:text-black transition-all duration-300 text-lg font-medium"
                 >
                   VIEW FAQ
                 </Link>
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="font-montserrat bg-white text-black px-8 py-3 hover:bg-gray-200 transition-all duration-300 text-lg font-medium"
                 >
                   CONTACT US
@@ -328,8 +392,8 @@ export default function AdultClassesPage() {
               </div>
             </motion.div>
 
-            </div>
-          
+          </div>
+
         </section>
       </main>
 
@@ -337,11 +401,11 @@ export default function AdultClassesPage() {
       {isModalOpen && (
         <div className="fixed inset-0 z-50 overflow-y-auto">
           {/* Backdrop */}
-          <div 
+          <div
             className="fixed inset-0 bg-black/80 transition-opacity"
             onClick={closeModal}
           ></div>
-          
+
           {/* Modal */}
           <div className="flex min-h-full items-center justify-center p-4">
             <div className="relative bg-black border border-white/20 rounded-lg w-full max-w-4xl max-h-[90vh] overflow-hidden">
@@ -356,7 +420,7 @@ export default function AdultClassesPage() {
                   ×
                 </button>
               </div>
-              
+
               {/* Content */}
               <div className="relative h-[600px] overflow-y-auto">
                 {/* Loading Indicator */}
@@ -372,18 +436,18 @@ export default function AdultClassesPage() {
                     </div>
                   </div>
                 )}
-                
-                <iframe 
+
+                <iframe
                   ref={dropInIframeRef}
                   src="https://app.acuityscheduling.com/schedule/38266b1c/appointment/40408954/calendar/7813210?appointmentTypeIds[]=40408954"
-                  width="100%" 
+                  width="100%"
                   height="100%"
-                  style={{ 
+                  style={{
                     border: 0,
                     background: 'transparent',
                     width: '100%',
                     height: '100%'
-                  }} 
+                  }}
                   onLoad={handleDropInIframeLoad}
                   title="Clockwork BJJ Drop In Class Scheduler"
                   className={`bg-transparent ${!isDropInFormLoaded ? 'hidden' : 'block'}`}
@@ -392,7 +456,7 @@ export default function AdultClassesPage() {
                   allow="fullscreen"
                 ></iframe>
               </div>
-              
+
               {/* Footer */}
               <div className="p-4 border-t border-white/20 text-center">
                 <p className="text-white/60 text-sm">

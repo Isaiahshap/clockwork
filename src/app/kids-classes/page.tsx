@@ -15,7 +15,7 @@ export default function KidsClassesPage() {
   const handleIframeLoad = () => {
     setIsFormLoaded(true);
   };
-  
+
   // Handler to adjust iframe height based on content
   useEffect(() => {
     // Function to adjust iframe height
@@ -34,12 +34,12 @@ export default function KidsClassesPage() {
               console.log("Could not adjust iframe height");
             }
           });
-          
+
           // Observe the iframe document body
           if (iframe.contentDocument?.body) {
             resizeObserver.observe(iframe.contentDocument.body);
           }
-          
+
           // Also set an initial height and check periodically
           const initialCheck = () => {
             try {
@@ -49,14 +49,14 @@ export default function KidsClassesPage() {
               console.log("Could not set initial iframe height");
             }
           };
-          
+
           // Initial check after a delay to ensure content is loaded
           setTimeout(initialCheck, 1000);
-          
+
           // Set up periodic checks for the first minute to handle dynamic content loading
           const intervalId = setInterval(initialCheck, 3000);
           setTimeout(() => clearInterval(intervalId), 60000);
-          
+
           // Return cleanup function
           return () => {
             resizeObserver.disconnect();
@@ -67,19 +67,19 @@ export default function KidsClassesPage() {
         console.log("Error setting up iframe height adjustment:", error);
       }
     };
-    
+
     // Call the function when the iframe loads
     if (isFormLoaded) {
       const cleanup = adjustIframeHeight();
       return cleanup;
     }
-    
+
     // Add event listener for iframe load
     const iframe = iframeRef.current;
     if (iframe) {
       iframe.addEventListener('load', handleIframeLoad);
     }
-    
+
     // Clean up event listener when component unmounts
     return () => {
       if (iframe) {
@@ -87,6 +87,71 @@ export default function KidsClassesPage() {
       }
     };
   }, [isFormLoaded]);
+
+  // GA4 Event Tracking for Kids Form
+  useEffect(() => {
+    const gtag = typeof window !== 'undefined' ? (window as Window & { gtag?: (...args: unknown[]) => void }).gtag : undefined;
+    if (!gtag) return;
+
+    // Helper to get traffic source
+    const getTrafficSource = () => {
+      const referrer = document.referrer;
+      if (!referrer) return 'direct';
+
+      if (referrer.includes('google.com')) return 'organic_google';
+      if (referrer.includes('bing.com')) return 'organic_bing';
+      if (referrer.includes('yahoo.com')) return 'organic_yahoo';
+      if (referrer.includes('duckduckgo.com')) return 'organic_duckduckgo';
+
+      return 'referral';
+    };
+
+    const trafficSource = getTrafficSource();
+
+    // Track form view when iframe loads
+    if (isFormLoaded) {
+      gtag('event', 'form_view', {
+        form_type: 'kids_signup',
+        form_location: 'kids-classes-page',
+        traffic_source: trafficSource,
+        page_path: window.location.pathname
+      });
+    }
+
+    // Track iframe interaction
+    const handleWindowBlur = () => {
+      const iframe = iframeRef.current;
+      if (iframe && document.activeElement === iframe) {
+        gtag('event', 'form_interaction', {
+          form_type: 'kids_signup',
+          form_location: 'kids-classes-page',
+          traffic_source: trafficSource,
+          page_path: window.location.pathname
+        });
+      }
+    };
+
+    window.addEventListener('blur', handleWindowBlur);
+
+    // Track engagement after 30 seconds
+    const engagementTimer = setTimeout(() => {
+      if (isFormLoaded) {
+        gtag('event', 'form_engagement', {
+          form_type: 'kids_signup',
+          form_location: 'kids-classes-page',
+          traffic_source: trafficSource,
+          engagement_time: '30s',
+          page_path: window.location.pathname
+        });
+      }
+    }, 30000);
+
+    return () => {
+      window.removeEventListener('blur', handleWindowBlur);
+      clearTimeout(engagementTimer);
+    };
+  }, [isFormLoaded]);
+
 
   return (
     <>
@@ -102,12 +167,12 @@ export default function KidsClassesPage() {
             priority
             className="object-cover"
           />
-          
-          
+
+
           {/* Hero Content */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <motion.h1 
+              <motion.h1
                 className="font-bebas text-6xl md:text-8xl lg:text-9xl text-white tracking-wider text-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -163,7 +228,7 @@ export default function KidsClassesPage() {
             >
               OUR PROGRAMS
             </motion.h2>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
               {/* 4-6 Program */}
               <motion.div
@@ -200,7 +265,7 @@ export default function KidsClassesPage() {
                   </ul>
                 </div>
               </motion.div>
-              
+
               {/* 6-9 Program */}
               <motion.div
                 initial={{ opacity: 0, y: 20, rotateY: 10 }}
@@ -281,11 +346,11 @@ export default function KidsClassesPage() {
             >
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/10 blur-3xl"></div>
               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500/10 blur-3xl"></div>
-              
+
               <div className="relative bg-gradient-to-br from-zinc-900 to-zinc-800 p-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
                   <div className="aspect-video w-full overflow-hidden shadow-xl relative transform -rotate-1 hover:rotate-0 transition-transform duration-500">
-                    <Image 
+                    <Image
                       src="/images/kidsclasses.webp"
                       alt="Kids training"
                       fill
@@ -309,7 +374,7 @@ export default function KidsClassesPage() {
                         "Develop coordination, strength and bully-proof confidence",
                         "Flexible after-school & weekend times"
                       ].map((highlight, index) => (
-                        <motion.li 
+                        <motion.li
                           key={index}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
@@ -338,7 +403,7 @@ export default function KidsClassesPage() {
               className="mb-12 relative"
             >
               <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-40 h-40 bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-3xl"></div>
-              
+
               <div className="relative">
                 <div className="text-center mb-12">
                   <motion.div
@@ -356,43 +421,43 @@ export default function KidsClassesPage() {
                     Fill out the form below to sign up for a free trial class and see how your child can benefit from jiu-jitsu.
                   </p>
                 </div>
-                
-                {/* Form Container */}             
-                    {/* ZenPlanner Form Iframe */}
-                    <div className="w-full relative">
-                      {/* Loading Indicator */}
-                      {!isFormLoaded && (
-                        <div className="h-[800px] flex items-center justify-center bg-black/50">
-                          <div className="flex flex-col items-center">
-                            <div className="relative w-20 h-20 mb-6">
-                              <div className="absolute top-0 left-0 w-full h-full border-4 border-white/10 animate-pulse"></div>
-                              <div className="absolute top-0 left-0 w-full h-full border-t-4 border-white animate-spin"></div>
-                            </div>
-                            <p className="font-montserrat text-xl">Loading form...</p>
-                            <p className="font-montserrat text-white/60 mt-2">Please wait while we prepare your registration</p>
-                          </div>
-                        </div>
-                      )}
-                      
-                      <iframe 
-                        ref={iframeRef}
-                        src="https://eng.zenplanner.com/widget/form/NJB5bxSCFtwtBkC9idKb"
-                        width="100%" 
-                        height="900"
-                        style={{ 
-                          border: 0,
-                          background: 'transparent',
-                          minHeight: '900px',
-                          width: '100%',
-                          overflow: 'hidden'
-                        }} 
-                        onLoad={handleIframeLoad}
-                        title="Clockwork BJJ Kids Sign Up Form"
-                        className={`bg-transparent ${!isFormLoaded ? 'hidden' : 'block'}`}
-                        frameBorder="0"
-                        scrolling="no"
 
-                      ></iframe>
+                {/* Form Container */}
+                {/* ZenPlanner Form Iframe */}
+                <div className="w-full relative">
+                  {/* Loading Indicator */}
+                  {!isFormLoaded && (
+                    <div className="h-[800px] flex items-center justify-center bg-black/50">
+                      <div className="flex flex-col items-center">
+                        <div className="relative w-20 h-20 mb-6">
+                          <div className="absolute top-0 left-0 w-full h-full border-4 border-white/10 animate-pulse"></div>
+                          <div className="absolute top-0 left-0 w-full h-full border-t-4 border-white animate-spin"></div>
+                        </div>
+                        <p className="font-montserrat text-xl">Loading form...</p>
+                        <p className="font-montserrat text-white/60 mt-2">Please wait while we prepare your registration</p>
+                      </div>
+                    </div>
+                  )}
+
+                  <iframe
+                    ref={iframeRef}
+                    src="https://eng.zenplanner.com/widget/form/NJB5bxSCFtwtBkC9idKb"
+                    width="100%"
+                    height="900"
+                    style={{
+                      border: 0,
+                      background: 'transparent',
+                      minHeight: '900px',
+                      width: '100%',
+                      overflow: 'hidden'
+                    }}
+                    onLoad={handleIframeLoad}
+                    title="Clockwork BJJ Kids Sign Up Form"
+                    className={`bg-transparent ${!isFormLoaded ? 'hidden' : 'block'}`}
+                    frameBorder="0"
+                    scrolling="no"
+
+                  ></iframe>
                 </div>
               </div>
             </motion.div>
@@ -406,14 +471,14 @@ export default function KidsClassesPage() {
             >
               <h3 className="font-bebas text-2xl md:text-3xl mb-4 tracking-wider">NEED MORE INFO?</h3>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/faq" 
+                <Link
+                  href="/faq"
                   className="font-montserrat bg-transparent border-2 border-white text-white px-8 py-3 hover:bg-white hover:text-black transition-all duration-300 text-lg font-medium"
                 >
                   VIEW FAQ
                 </Link>
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="font-montserrat bg-white text-black px-8 py-3 hover:bg-gray-200 transition-all duration-300 text-lg font-medium"
                 >
                   CONTACT US

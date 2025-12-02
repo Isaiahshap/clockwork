@@ -16,12 +16,80 @@ export default function FreeTrialPage() {
   const handleIframeLoad = () => {
     setIsFormLoaded(true);
   };
-  
+
   // Reset form loaded state when tab changes
   useEffect(() => {
     setIsFormLoaded(false);
   }, [activeTab]);
-  
+
+  // GA4 Event Tracking Helper
+  useEffect(() => {
+    // Declare gtag function for TypeScript
+    const gtag = typeof window !== 'undefined' ? (window as Window & { gtag?: (...args: unknown[]) => void }).gtag : undefined;
+
+    if (!gtag) return;
+
+    // Helper to get traffic source
+    const getTrafficSource = () => {
+      const referrer = document.referrer;
+      if (!referrer) return 'direct';
+
+      // Check for organic search engines
+      if (referrer.includes('google.com')) return 'organic_google';
+      if (referrer.includes('bing.com')) return 'organic_bing';
+      if (referrer.includes('yahoo.com')) return 'organic_yahoo';
+      if (referrer.includes('duckduckgo.com')) return 'organic_duckduckgo';
+
+      return 'referral';
+    };
+
+    const formType = activeTab === 'adults' ? 'adult_trial' : 'kids_trial';
+    const trafficSource = getTrafficSource();
+
+    // Track form view when iframe loads
+    if (isFormLoaded) {
+      gtag('event', 'form_view', {
+        form_type: formType,
+        form_location: 'free-trial-page',
+        traffic_source: trafficSource,
+        page_path: window.location.pathname
+      });
+    }
+
+    // Track iframe interaction (when user clicks into iframe)
+    const handleWindowBlur = () => {
+      const iframe = iframeRef.current;
+      if (iframe && document.activeElement === iframe) {
+        gtag('event', 'form_interaction', {
+          form_type: formType,
+          form_location: 'free-trial-page',
+          traffic_source: trafficSource,
+          page_path: window.location.pathname
+        });
+      }
+    };
+
+    window.addEventListener('blur', handleWindowBlur);
+
+    // Track time on page with form (engagement after 30 seconds)
+    const engagementTimer = setTimeout(() => {
+      if (isFormLoaded) {
+        gtag('event', 'form_engagement', {
+          form_type: formType,
+          form_location: 'free-trial-page',
+          traffic_source: trafficSource,
+          engagement_time: '30s',
+          page_path: window.location.pathname
+        });
+      }
+    }, 30000);
+
+    return () => {
+      window.removeEventListener('blur', handleWindowBlur);
+      clearTimeout(engagementTimer);
+    };
+  }, [isFormLoaded, activeTab]);
+
   // Handler to adjust iframe height based on content
   useEffect(() => {
     // Function to adjust iframe height
@@ -45,18 +113,18 @@ export default function FreeTrialPage() {
         console.log("Error accessing iframe content");
       }
     };
-    
+
     // Call the function when the iframe loads
     if (isFormLoaded) {
       adjustIframeHeight();
     }
-    
+
     // Add event listener for iframe load
     const iframe = iframeRef.current;
     if (iframe) {
       iframe.addEventListener('load', adjustIframeHeight);
     }
-    
+
     // Clean up event listener when component unmounts
     return () => {
       if (iframe) {
@@ -79,13 +147,13 @@ export default function FreeTrialPage() {
             priority
             className="object-cover"
           />
-          
+
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/60"></div>
-          
+
           {/* Hero Content */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <motion.h1 
+            <motion.h1
               className="font-bebas text-5xl md:text-7xl lg:text-8xl text-white tracking-wider text-center"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -109,7 +177,7 @@ export default function FreeTrialPage() {
             >
               <h2 className="font-bebas text-3xl md:text-4xl mb-6 tracking-wider">START YOUR BJJ JOURNEY</h2>
               <p className="font-montserrat text-lg max-w-3xl mx-auto">
-                Whether you&apos;re completely new to martial arts or looking for a new gym, we invite you to 
+                Whether you&apos;re completely new to martial arts or looking for a new gym, we invite you to
                 experience Clockwork BJJ with a complimentary class. Select the appropriate program below to get started.
               </p>
             </motion.div>
@@ -126,21 +194,19 @@ export default function FreeTrialPage() {
                 <div className="inline-flex border border-zinc-700 overflow-hidden">
                   <button
                     onClick={() => setActiveTab('adults')}
-                    className={`px-8 py-4 font-bebas text-xl tracking-wider transition-colors duration-200 ${
-                      activeTab === 'adults'
-                        ? 'bg-white text-black'
-                        : 'bg-zinc-900 text-white hover:bg-zinc-800'
-                    }`}
+                    className={`px-8 py-4 font-bebas text-xl tracking-wider transition-colors duration-200 ${activeTab === 'adults'
+                      ? 'bg-white text-black'
+                      : 'bg-zinc-900 text-white hover:bg-zinc-800'
+                      }`}
                   >
                     ADULTS
                   </button>
                   <button
                     onClick={() => setActiveTab('kids')}
-                    className={`px-8 py-4 font-bebas text-xl tracking-wider transition-colors duration-200 ${
-                      activeTab === 'kids'
-                        ? 'bg-white text-black'
-                        : 'bg-zinc-900 text-white hover:bg-zinc-800'
-                    }`}
+                    className={`px-8 py-4 font-bebas text-xl tracking-wider transition-colors duration-200 ${activeTab === 'kids'
+                      ? 'bg-white text-black'
+                      : 'bg-zinc-900 text-white hover:bg-zinc-800'
+                      }`}
                   >
                     KIDS
                   </button>
@@ -161,7 +227,7 @@ export default function FreeTrialPage() {
                       <div>
                         <h3 className="font-bebas text-2xl mb-4 tracking-wide">ADULT BRAZILIAN JIU-JITSU PROGRAMS</h3>
                         <p className="font-montserrat mb-4">
-                          Whether you typed &quot;BJJ classes near me&quot; at 2 a.m. or you&apos;re relocating to NYC and need a new gym, 
+                          Whether you typed &quot;BJJ classes near me&quot; at 2 a.m. or you&apos;re relocating to NYC and need a new gym,
                           we have a program for every level.
                         </p>
                         <div className="space-y-4 mb-6">
@@ -194,7 +260,7 @@ export default function FreeTrialPage() {
                         </div>
                       </div>
                       <div className="aspect-video relative overflow-hidden">
-                        <Image 
+                        <Image
                           src="/images/adultclasses.webp"
                           alt="Clockwork BJJ Adult Classes"
                           fill
@@ -202,11 +268,11 @@ export default function FreeTrialPage() {
                         />
                       </div>
                     </div>
-                    
+
                     {/* Form Container */}
                     <div className="mt-8">
                       <h3 className="font-bebas text-2xl mb-6 tracking-wide text-center">SIGN UP FOR YOUR FREE TRIAL CLASS</h3>
-                      
+
                       {/* ZenPlanner Form Iframe */}
                       <div className="w-full relative">
                         {/* Loading Indicator */}
@@ -218,17 +284,17 @@ export default function FreeTrialPage() {
                             </div>
                           </div>
                         )}
-                        
-                        <iframe 
+
+                        <iframe
                           ref={iframeRef}
                           src="https://eng.zenplanner.com/widget/form/zZQW4SE3tmnobQ3E92bK"
-                          width="100%" 
+                          width="100%"
                           height="900"
-                          style={{ 
+                          style={{
                             border: 0,
                             background: 'transparent',
                             minHeight: '900px'
-                          }} 
+                          }}
                           onLoad={handleIframeLoad}
                           title="Clockwork BJJ Adult Sign Up Form"
                           className={`bg-transparent ${!isFormLoaded ? 'hidden' : 'block'}`}
@@ -252,7 +318,7 @@ export default function FreeTrialPage() {
                       <div>
                         <h3 className="font-bebas text-2xl mb-4 tracking-wide">KIDS JIU-JITSU PROGRAMS</h3>
                         <p className="font-montserrat mb-4">
-                          The Jiu Jitsu Children&apos;s program at Clockwork Jiu Jitsu focuses on teaching Self Defense, 
+                          The Jiu Jitsu Children&apos;s program at Clockwork Jiu Jitsu focuses on teaching Self Defense,
                           Physical Education, and Personal Development.
                         </p>
                         <div className="space-y-4 mb-6">
@@ -285,7 +351,7 @@ export default function FreeTrialPage() {
                         </div>
                       </div>
                       <div className="aspect-video relative overflow-hidden">
-                        <Image 
+                        <Image
                           src="/images/kidsclasses.webp"
                           alt="Clockwork BJJ Kids Classes"
                           fill
@@ -293,11 +359,11 @@ export default function FreeTrialPage() {
                         />
                       </div>
                     </div>
-                    
+
                     {/* Form Container */}
                     <div className="mt-8">
                       <h3 className="font-bebas text-2xl mb-6 tracking-wide text-center">SIGN UP FOR YOUR CHILD&apos;S FREE TRIAL CLASS</h3>
-                      
+
                       {/* ZenPlanner Form Iframe */}
                       <div className="w-full relative">
                         {/* Loading Indicator */}
@@ -309,17 +375,17 @@ export default function FreeTrialPage() {
                             </div>
                           </div>
                         )}
-                        
-                        <iframe 
+
+                        <iframe
                           ref={iframeRef}
                           src="https://eng.zenplanner.com/widget/form/NJB5bxSCFtwtBkC9idKb"
-                          width="100%" 
+                          width="100%"
                           height="900"
-                          style={{ 
+                          style={{
                             border: 0,
                             background: 'transparent',
                             minHeight: '900px'
-                          }} 
+                          }}
                           onLoad={handleIframeLoad}
                           title="Clockwork BJJ Kids Sign Up Form"
                           className={`bg-transparent ${!isFormLoaded ? 'hidden' : 'block'}`}
@@ -403,7 +469,7 @@ export default function FreeTrialPage() {
               className="mt-16 text-center"
             >
               <p className="font-montserrat text-lg max-w-3xl mx-auto">
-                Complete the form above to book your free trial class. 
+                Complete the form above to book your free trial class.
                 We&apos;ll contact you to confirm your spot and answer any questions you may have.
               </p>
               <p className="font-montserrat text-white/70 mt-4">
