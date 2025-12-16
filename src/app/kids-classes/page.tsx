@@ -427,7 +427,7 @@ export default function KidsClassesPage() {
                 <div className="w-full relative">
                   {/* Loading Indicator */}
                   {!isFormLoaded && (
-                    <div className="h-[800px] flex items-center justify-center bg-black/50">
+                    <div className="h-[1000px] flex items-center justify-center bg-black/50">
                       <div className="flex flex-col items-center">
                         <div className="relative w-20 h-20 mb-6">
                           <div className="absolute top-0 left-0 w-full h-full border-4 border-white/10 animate-pulse"></div>
@@ -441,13 +441,13 @@ export default function KidsClassesPage() {
 
                   <iframe
                     ref={iframeRef}
-                    src="https://eng.zenplanner.com/widget/form/NJB5bxSCFtwtBkC9idKb"
+                    src="https://kids.clockworkbjj.com/"
                     width="100%"
-                    height="900"
+                    height="1000"
                     style={{
                       border: 0,
                       background: 'transparent',
-                      minHeight: '900px',
+                      minHeight: '1000px',
                       width: '100%',
                       overflow: 'hidden'
                     }}

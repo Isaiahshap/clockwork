@@ -277,7 +277,7 @@ export default function FreeTrialPage() {
                       <div className="w-full relative">
                         {/* Loading Indicator */}
                         {!isFormLoaded && (
-                          <div className="h-[900px] flex items-center justify-center bg-black/50">
+                          <div className="h-[1000px] flex items-center justify-center bg-black/50">
                             <div className="flex flex-col items-center">
                               <div className="w-16 h-16 border-4 border-white/20 border-t-white animate-spin mb-4"></div>
                               <p className="font-montserrat text-white/80">Loading form...</p>
@@ -287,13 +287,13 @@ export default function FreeTrialPage() {
 
                         <iframe
                           ref={iframeRef}
-                          src="https://eng.zenplanner.com/widget/form/zZQW4SE3tmnobQ3E92bK"
+                          src="https://adult.clockworkbjj.com/"
                           width="100%"
-                          height="900"
+                          height="1000"
                           style={{
                             border: 0,
                             background: 'transparent',
-                            minHeight: '900px'
+                            minHeight: '1000px'
                           }}
                           onLoad={handleIframeLoad}
                           title="Clockwork BJJ Adult Sign Up Form"
@@ -368,7 +368,7 @@ export default function FreeTrialPage() {
                       <div className="w-full relative">
                         {/* Loading Indicator */}
                         {!isFormLoaded && (
-                          <div className="h-[900px] flex items-center justify-center bg-black/50">
+                          <div className="h-[1000px] flex items-center justify-center bg-black/50">
                             <div className="flex flex-col items-center">
                               <div className="w-16 h-16 border-4 border-white/20 border-t-white animate-spin mb-4"></div>
                               <p className="font-montserrat text-white/80">Loading form...</p>
@@ -378,13 +378,13 @@ export default function FreeTrialPage() {
 
                         <iframe
                           ref={iframeRef}
-                          src="https://eng.zenplanner.com/widget/form/NJB5bxSCFtwtBkC9idKb"
+                          src="https://kids.clockworkbjj.com/"
                           width="100%"
-                          height="900"
+                          height="1000"
                           style={{
                             border: 0,
                             background: 'transparent',
-                            minHeight: '900px'
+                            minHeight: '1000px'
                           }}
                           onLoad={handleIframeLoad}
                           title="Clockwork BJJ Kids Sign Up Form"
