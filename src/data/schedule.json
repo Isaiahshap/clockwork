@@ -54,7 +54,7 @@
     "saturday": [
       { "time": "10:00 AM", "name": "Competition Class", "type": "competition" },
       { "time": "11:00 AM", "name": "Kids 4-13", "type": "kids" },
-      { "time": "12:00 PM", "name": "WHITE BELT", "type": "white-belt" },
+      { "time": "12:00 PM", "name": "White Belt", "type": "white-belt" },
       { "time": "1:00 PM", "name": "UGS", "type": "ugs" },
       { "time": "2:00 PM", "name": "NO GI", "type": "nogi" }
     ]
