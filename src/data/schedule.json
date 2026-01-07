@@ -14,7 +14,7 @@
       { "time": "7:30 PM", "name": "NO GI", "type": "nogi" }
     ],
     "tuesday": [
-      { "time": "8:00 AM", "name": "GI", "type": "gi" },
+      { "time": "7:00 AM", "name": "GI", "type": "gi" },
       { "time": "12:00 PM", "name": "GI", "type": "gi" },
       { "time": "4:45 PM", "name": "Kids 9-13", "type": "kids" },
       { "time": "5:30 PM", "name": "Blue Belt", "type": "blue-belt" },
@@ -34,7 +34,7 @@
       { "time": "7:30 PM", "name": "No Gi", "type": "nogi" }
     ],
     "thursday": [
-      { "time": "8:00 AM", "name": "No Gi", "type": "nogi" },
+      { "time": "7:00 AM", "name": "GI", "type": "gi" },
       { "time": "12:00 PM", "name": "GI", "type": "gi" },
       { "time": "4:45 PM", "name": "Kids 9-13", "type": "kids" },
       { "time": "5:30 PM", "name": "Blue Belt", "type": "blue-belt" },
@@ -52,12 +52,10 @@
       { "time": "6:30 PM", "name": "GI", "type": "gi" }
     ],
     "saturday": [
-      { "time": "8:00 AM", "name": "GI", "type": "gi" },
-      { "time": "9:00 AM", "name": "No Gi", "type": "nogi" },
-      { "time": "10:45 AM", "name": "Kids 4-13", "type": "kids" },
-      { "time": "11:30 AM", "name": "White Belt", "type": "white-belt" },
-      { "time": "12:30 PM", "name": "UGS (UNIVERSAL GRAPPLING SYSTEM)", "type": "ugs" },
-      { "time": "1:30 PM", "name": "No Gi", "type": "nogi" }
+      { "time": "10:00 AM", "name": "Competition Class", "type": "competition" },
+      { "time": "11:00 AM", "name": "Kids 4-13", "type": "kids" },
+      { "time": "1:00 PM", "name": "UGS", "type": "ugs" },
+      { "time": "2:00 PM", "name": "NO GI", "type": "nogi" }
     ]
   },
   "months": {

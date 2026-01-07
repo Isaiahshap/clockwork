@@ -18,7 +18,8 @@ const classColors = {
   'white-belt': 'bg-gray-100 text-black',
   'kids': 'bg-red-600 text-white',
   'fundamentals': 'bg-gray-100 text-black',
-  'ugs': 'bg-red-600 text-white'
+  'ugs': 'bg-red-600 text-white',
+  'competition': 'bg-purple-600 text-white'
 };
 
 const monthKeys = [
@@ -198,6 +199,10 @@ export default function Calendar() {
           <div className="flex items-center gap-2">
             <div className="w-5 h-5 md:w-6 md:h-6 bg-gray-100 flex-shrink-0"></div>
             <span className="font-montserrat text-xs md:text-sm">White Belt / Fundamentals</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 md:w-6 md:h-6 bg-purple-600 flex-shrink-0"></div>
+            <span className="font-montserrat text-xs md:text-sm">Competition Class</span>
           </div>
         </div>
       </div>

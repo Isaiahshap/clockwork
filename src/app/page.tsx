@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
+import BootcampBanner from "@/components/sections/BootcampBanner";
 import Marquee from "@/components/sections/Marquee";
 import Reviews from "@/components/sections/Reviews";
 import About from "@/components/sections/About";
@@ -17,6 +18,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <BootcampBanner />
         <Marquee />
         <Reviews />
         <About />

@@ -74,10 +74,10 @@ export default function Hero() {
             START YOUR FREE TRIAL
           </Link>
           <Link 
-            href="/bootcamp" 
+            href="/about" 
             className="font-bebas inline-block bg-black text-white px-10 py-5 text-2xl tracking-wider border-2 border-white hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-auto text-center whitespace-nowrap"
           >
-            START OUR BJJ BOOTCAMP
+            LEARN MORE
           </Link>
         </motion.div>
       </div>

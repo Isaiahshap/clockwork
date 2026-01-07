@@ -163,7 +163,7 @@ export default function Navbar() {
               
               {/* Center - Reviews */}
               <Link href="/about/reviews" className="hidden lg:flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors duration-300 text-xs">
-                <span className="font-bebas tracking-wide">OVER 290 FIVE STAR REVIEWS</span>
+                <span className="font-bebas tracking-wide">OVER 310 FIVE STAR REVIEWS</span>
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => (
                     <svg

@@ -66,7 +66,7 @@ export default function Reviews() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-bebas text-4xl md:text-5xl lg:text-6xl tracking-wider mb-6">
-            OVER 290 5 STAR REVIEWS ON GOOGLE
+            OVER 310 5 STAR REVIEWS ON GOOGLE
           </h2>
           <div className="flex justify-center gap-2 mb-6">
             {[...Array(5)].map((_, i) => (
