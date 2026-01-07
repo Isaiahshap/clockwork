@@ -23,9 +23,6 @@ const classColors = {
 };
 
 const monthKeys = [
-  'october2025',
-  'november2025',
-  'december2025',
   'january2026',
   'february2026',
   'march2026',
