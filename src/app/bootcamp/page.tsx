@@ -81,9 +81,9 @@ export default function BootcampPage() {
                   <div className="inline-block bg-red-500/20 px-4 py-2 mb-4">
                     <span className="font-bebas text-xl tracking-wider text-red-400">⚠️ SPOTS FILL FAST</span>
                   </div>
-                  <h3 className="font-bebas text-3xl md:text-4xl mb-4 tracking-wide">OUR NOVEMBER BOOTCAMP SOLD OUT WITHIN A FEW WEEKS</h3>
+                  <h3 className="font-bebas text-3xl md:text-4xl mb-4 tracking-wide">OUR FEBRUARY BOOTCAMP SOLD OUT WITHIN A FEW WEEKS</h3>
                   <p className="font-montserrat text-lg mb-6">
-                    Our January bootcamp is now available for registration below. Don&apos;t miss your chance to start your BJJ journey in the new year!
+                    Our March bootcamp starts March 17th — register below before spots are gone!
                   </p>
                   <div className="flex justify-center">
                     <div className="inline-flex items-center bg-white/10 px-6 py-3 border border-white/20">

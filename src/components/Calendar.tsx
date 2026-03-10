@@ -26,11 +26,13 @@ const monthKeys = [
   'january2026',
   'february2026',
   'march2026',
-  'april2026'
+  'april2026',
+  'may2026',
+  'june2026'
 ];
 
 export default function Calendar() {
-  const [currentMonthIndex, setCurrentMonthIndex] = useState(0);
+  const [currentMonthIndex, setCurrentMonthIndex] = useState(2);
 
   const currentMonthKey = monthKeys[currentMonthIndex];
   const monthData = scheduleData.months[currentMonthKey as keyof typeof scheduleData.months];
