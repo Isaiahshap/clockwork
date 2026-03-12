@@ -160,7 +160,7 @@ export default function BootcampPage() {
                 <div className="bg-zinc-800/50 p-6 border border-zinc-700 mb-8">
                   <div className="text-center mb-4">
                     <h4 className="font-bebas text-2xl mb-2">ONLY</h4>
-                    <p className="font-montserrat font-bold text-2xl text-white">$310 — everything included.</p>
+                    <p className="font-montserrat font-bold text-2xl text-white">$320 — everything included.</p>
                   </div>
                   <p className="font-montserrat text-white/80 text-center">
                     This is the fastest, most beginner-friendly way to get started — and we keep the group small so you&apos;ll get plenty of personal attention.

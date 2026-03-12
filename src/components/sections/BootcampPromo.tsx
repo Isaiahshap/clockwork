@@ -59,7 +59,7 @@ export default function BootcampPromo() {
               </ul>
               <div className="bg-zinc-800/50 p-4 border border-zinc-700 mb-6">
                 <p className="font-montserrat text-center">
-                  <span className="font-bebas text-xl tracking-wide">ONLY $310</span> — everything included
+                  <span className="font-bebas text-xl tracking-wide">ONLY $320</span> — everything included
                 </p>
               </div>
               <div className="flex justify-center md:justify-start">
