@@ -16,7 +16,7 @@ export default function BootcampBanner() {
           <p className="font-bebas text-sm md:text-base lg:text-lg text-white/90 tracking-wide">
             <span className="inline-block">FEBRUARY BOOTCAMP IS SOLD OUT!</span>
             <span className="hidden md:inline mx-2">•</span>
-            <span className="block md:inline mt-1 md:mt-0">MARCH BOOTCAMP STARTS MARCH 17TH </span>
+            <span className="block md:inline mt-1 md:mt-0">APRIL BOOTCAMP STARTS APRIL 14TH </span>
             <span className="italic text-white/70">(LIMITED SPOTS)</span>
           </p>
           <Link

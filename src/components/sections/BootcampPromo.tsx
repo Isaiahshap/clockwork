@@ -33,9 +33,9 @@ export default function BootcampPromo() {
                   ⚠️ FEBRUARY SOLD OUT IN WEEKS
                 </span>
               </div>
-              <h3 className="font-bebas text-2xl mb-4 tracking-wide">MARCH BOOTCAMP — STARTS MARCH 17TH</h3>
+              <h3 className="font-bebas text-2xl mb-4 tracking-wide">APRIL BOOTCAMP — STARTS APRIL 14TH</h3>
               <p className="font-montserrat mb-6">
-                Our February bootcamp sold out within a few weeks! Don&apos;t miss your chance to join our March 4-week Beginners Bootcamp starting March 17th:
+                Our February bootcamp sold out within a few weeks! Don&apos;t miss your chance to join our April 4-week Beginners Bootcamp starting April 14th:
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-center">

@@ -83,7 +83,7 @@ export default function BootcampPage() {
                   </div>
                   <h3 className="font-bebas text-3xl md:text-4xl mb-4 tracking-wide">OUR FEBRUARY BOOTCAMP SOLD OUT WITHIN A FEW WEEKS</h3>
                   <p className="font-montserrat text-lg mb-6">
-                    Our March bootcamp starts March 17th — register below before spots are gone!
+                    Our April bootcamp starts April 14th — register below before spots are gone!
                   </p>
                   <div className="flex justify-center">
                     <div className="inline-flex items-center bg-white/10 px-6 py-3 border border-white/20">
