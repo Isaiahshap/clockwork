@@ -211,7 +211,7 @@ export default function Footer() {
         
         <div className="max-w-6xl mx-auto mt-6 text-center">
           <p className="text-xs text-white/50 italic">
-            Made while shrimping — by <a href="https://www.yeshaya.dev" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors underline-offset-2 hover:underline">Yeshaya.dev</a>
+            Made while shrimping — by <a href="https://www.causehouse.co" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors underline-offset-2 hover:underline">CauseHouse</a>
           </p>
         </div>
       </div>
