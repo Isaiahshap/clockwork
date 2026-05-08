@@ -64,8 +64,8 @@ export default function BootcampPage() {
             >
               <h2 className="font-bebas text-3xl md:text-4xl mb-6 tracking-wider">4-WEEK BEGINNERS COURSE</h2>
               <p className="font-montserrat text-lg max-w-3xl mx-auto">
-                If you&apos;ve ever thought about trying Brazilian Jiu Jitsu, here&apos;s your chance. 
-                We&apos;re starting a 4-week Beginners Course at Clockwork Jiu Jitsu — designed specifically for people who are brand new to BJJ.
+                If you&apos;ve ever thought about trying Brazilian Jiu Jitsu, here&apos;s your chance.
+                Our next 4-week Beginners Course starts May 19th — designed specifically for people who are brand new to BJJ.
               </p>
             </motion.div>
 
@@ -81,9 +81,9 @@ export default function BootcampPage() {
                   <div className="inline-block bg-red-500/20 px-4 py-2 mb-4">
                     <span className="font-bebas text-xl tracking-wider text-red-400">⚠️ SPOTS FILL FAST</span>
                   </div>
-                  <h3 className="font-bebas text-3xl md:text-4xl mb-4 tracking-wide">OUR FEBRUARY BOOTCAMP SOLD OUT WITHIN A FEW WEEKS</h3>
+                  <h3 className="font-bebas text-3xl md:text-4xl mb-4 tracking-wide">LAST MONTH&apos;S BOOTCAMP SOLD OUT WITHIN A COUPLE OF WEEKS</h3>
                   <p className="font-montserrat text-lg mb-6">
-                    Our April bootcamp starts April 14th — register below before spots are gone!
+                    Our May bootcamp starts May 19th — register below before spots are gone!
                   </p>
                   <div className="flex justify-center">
                     <div className="inline-flex items-center bg-white/10 px-6 py-3 border border-white/20">

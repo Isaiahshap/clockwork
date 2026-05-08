@@ -1,12 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'BJJ Bootcamp | Intensive Training | Clockwork BJJ NYC',
-  description: 'Join our intensive Brazilian Jiu-Jitsu bootcamp at Clockwork BJJ NYC. Accelerate your skills with focused training sessions designed for rapid improvement.',
+  title: 'BJJ Bootcamp | May 19 | Clockwork BJJ NYC',
+  description:
+    "May Beginners Bootcamp starts May 19 at Clockwork BJJ NYC. Last month's cohort sold out in a couple of weeks — secure your spot in our 4-week intro to BJJ.",
   keywords: ['bjj bootcamp nyc', 'brazilian jiu jitsu intensive training', 'clockwork bjj bootcamp', 'bjj workshop manhattan', 'intensive martial arts training nyc'],
   openGraph: {
-    title: 'BJJ Bootcamp | Intensive Training | Clockwork NYC',
-    description: 'Accelerate your BJJ journey with our intensive bootcamp program. Focused training for rapid skill development at NYC\'s premier academy.',
+    title: 'BJJ Bootcamp — May 19 | Clockwork NYC',
+    description:
+      'May bootcamp kicks off May 19. Last month sold out quickly — beginner-friendly 4-week course with uniform included.',
     type: 'website',
     locale: 'en_US',
     siteName: 'Clockwork Brazilian Jiu-Jitsu',
@@ -21,8 +23,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BJJ Bootcamp | Clockwork NYC',
-    description: 'Intensive Brazilian Jiu-Jitsu training for accelerated skill development. Join our bootcamp program.',
+    title: 'BJJ Bootcamp — May 19 | Clockwork NYC',
+    description:
+      'May bootcamp May 19. Last month sold out in a couple weeks — 4-week beginners course at Clockwork BJJ.',
     images: ['/images/hero-bg3.webp']
   },
   alternates: {

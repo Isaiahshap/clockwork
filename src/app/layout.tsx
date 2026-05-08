@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import BootcampCornerPopup from "@/components/layout/BootcampCornerPopup";
 import { Montserrat, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 
@@ -149,6 +150,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <BootcampCornerPopup />
       </body>
     </html>
   );
