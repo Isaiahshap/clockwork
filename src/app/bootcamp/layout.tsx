@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'BJJ Bootcamp | May 19 | Clockwork BJJ NYC',
+  title: 'BJJ Bootcamp | July 7 | Clockwork BJJ NYC',
   description:
-    "May Beginners Bootcamp starts May 19 at Clockwork BJJ NYC. Last month's cohort sold out in a couple of weeks — secure your spot in our 4-week intro to BJJ.",
+    "July Beginners Bootcamp starts July 7th at 7:30 PM at Clockwork BJJ NYC. Last month's cohort sold out in a couple of weeks — secure your spot in our 4-week intro to BJJ.",
   keywords: ['bjj bootcamp nyc', 'brazilian jiu jitsu intensive training', 'clockwork bjj bootcamp', 'bjj workshop manhattan', 'intensive martial arts training nyc'],
   openGraph: {
-    title: 'BJJ Bootcamp — May 19 | Clockwork NYC',
+    title: 'BJJ Bootcamp — July 7 | Clockwork NYC',
     description:
-      'May bootcamp kicks off May 19. Last month sold out quickly — beginner-friendly 4-week course with uniform included.',
+      'July bootcamp kicks off July 7th at 7:30 PM. Last month sold out quickly — beginner-friendly 4-week course with uniform included.',
     type: 'website',
     locale: 'en_US',
     siteName: 'Clockwork Brazilian Jiu-Jitsu',
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BJJ Bootcamp — May 19 | Clockwork NYC',
+    title: 'BJJ Bootcamp — July 7 | Clockwork NYC',
     description:
-      'May bootcamp May 19. Last month sold out in a couple weeks — 4-week beginners course at Clockwork BJJ.',
+      'July bootcamp July 7th at 7:30 PM. Last month sold out in a couple weeks — 4-week beginners course at Clockwork BJJ.',
     images: ['/images/hero-bg3.webp']
   },
   alternates: {

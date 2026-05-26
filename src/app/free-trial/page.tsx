@@ -428,9 +428,9 @@ export default function FreeTrialPage() {
                         ⚠️ LAST MONTH SOLD OUT IN A COUPLE WEEKS
                       </span>
                     </div>
-                    <h3 className="font-bebas text-2xl mb-4 tracking-wide">MAY BOOTCAMP — STARTS MAY 19TH</h3>
+                    <h3 className="font-bebas text-2xl mb-4 tracking-wide">JULY BOOTCAMP — STARTS JULY 7TH</h3>
                     <p className="font-montserrat mb-6">
-                      Looking for a structured introduction to BJJ? Last month&apos;s bootcamp filled fast — our May 4-week Beginners Bootcamp starts May 19th and includes:
+                      Looking for a structured introduction to BJJ? Last month&apos;s bootcamp filled fast — our July 4-week Beginners Bootcamp starts July 7th at 7:30 PM and includes:
                     </p>
                     <ul className="space-y-3 mb-6">
                       <li className="flex items-center">
