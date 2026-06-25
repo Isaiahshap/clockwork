@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Reorganized nav structure with dropdowns
 const navStructure = [
@@ -307,28 +307,61 @@ export default function Navbar() {
                         </svg>
                       </button>
                       
-                      {/* Dropdown menu */}
-                      <div 
-                        className={`absolute left-0 mt-0 w-48 bg-black border border-gray-700 shadow-lg rounded-b-md overflow-hidden transition-all duration-300 transform origin-top-left ${
-                          activeDropdown === item.name ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'
-                        }`}
-                        onMouseEnter={() => {
-                          if (hoverTimeout) clearTimeout(hoverTimeout);
-                        }}
-                      >
-                        <div className="py-1 divide-y divide-gray-800">
-                          {item.dropdown.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block px-4 py-2 text-sm font-montserrat text-white hover:bg-gray-800 transition-colors duration-150 hover:pl-6"
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
+                      <AnimatePresence>
+                        {activeDropdown === item.name && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 6, scale: 0.98 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 4, scale: 0.99 }}
+                            transition={{ type: 'spring', stiffness: 420, damping: 30 }}
+                            className="absolute left-0 top-full z-50 w-56"
+                            onMouseEnter={() => {
+                              if (hoverTimeout) clearTimeout(hoverTimeout);
+                            }}
+                          >
+                            {/* Invisible bridge — keeps hover alive between nav item and menu */}
+                            <div className="h-[15px] w-full" aria-hidden="true" />
+                            <div className="overflow-hidden border border-white/20 bg-black shadow-[0_16px_40px_rgba(0,0,0,0.9)]">
+                              <div className="h-px bg-white/30" />
+                              <div className="py-1">
+                                {item.dropdown.map((subItem, subIndex) => (
+                                  <motion.div
+                                    key={subItem.name}
+                                    initial={{ opacity: 0, x: -8 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{
+                                      delay: subIndex * 0.04,
+                                      type: 'spring',
+                                      stiffness: 380,
+                                      damping: 28,
+                                    }}
+                                  >
+                                    <Link
+                                      href={subItem.href}
+                                      className="group relative flex items-center justify-between overflow-hidden px-4 py-2.5 transition-colors duration-200 hover:bg-white/10"
+                                      onClick={() => setActiveDropdown(null)}
+                                    >
+                                      <span className="absolute inset-y-0 left-0 w-[2px] origin-center scale-y-0 bg-white transition-transform duration-200 group-hover:scale-y-100" />
+                                      <span className="relative font-bebas text-[15px] tracking-[0.14em] text-white transition-colors duration-200 group-hover:text-white">
+                                        {subItem.name}
+                                      </span>
+                                      <svg
+                                        className="relative h-3.5 w-3.5 -translate-x-1 text-white/0 transition-all duration-200 group-hover:translate-x-0 group-hover:text-white/80"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                      >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                      </svg>
+                                    </Link>
+                                  </motion.div>
+                                ))}
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </>
                   ) : item.external ? (
                     <a
@@ -490,37 +523,44 @@ export default function Navbar() {
                       opacity: { duration: 0.2 }
                     }}
                   >
-                    <div className="bg-zinc-900 border-l-4 border-white/20 ml-4">
+                    <div className="ml-3 mt-1 overflow-hidden border border-white/10 bg-zinc-950/90 backdrop-blur-sm">
+                      <div className="h-px bg-gradient-to-r from-white/50 via-white/20 to-transparent" />
                       {item.dropdown.map((subItem, subIndex) => (
                         <motion.div
                           key={subItem.name}
-                          initial={{ x: -30, opacity: 0 }}
+                          initial={{ x: -24, opacity: 0 }}
                           animate={{
-                            x: activeDropdown === item.name ? 0 : -30,
+                            x: activeDropdown === item.name ? 0 : -24,
                             opacity: activeDropdown === item.name ? 1 : 0
                           }}
                           transition={{ 
                             delay: activeDropdown === item.name ? subIndex * 0.05 : 0,
                             type: "spring",
-                            stiffness: 300,
-                            damping: 25
+                            stiffness: 320,
+                            damping: 26
                           }}
                         >
                           <Link
                             href={subItem.href}
-                            className="block px-6 py-3 text-base font-montserrat text-gray-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-300 border-b border-zinc-800/50 last:border-b-0"
+                            className="group relative flex items-center justify-between overflow-hidden border-b border-white/5 px-5 py-3.5 last:border-b-0 transition-colors duration-300 hover:bg-white/[0.05]"
                             onClick={() => {
                               setIsOpen(false);
                               setActiveDropdown(null);
                             }}
                           >
-                            <motion.span
-                              whileHover={{ x: 5 }}
-                              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                              className="block"
-                            >
+                            <span className="absolute inset-y-0 left-0 w-[2px] origin-top scale-y-0 bg-white transition-transform duration-300 group-hover:scale-y-100" />
+                            <span className="font-bebas text-base tracking-[0.12em] text-white/80 transition-colors duration-300 group-hover:text-white">
                               {subItem.name}
-                            </motion.span>
+                            </span>
+                            <svg
+                              className="h-4 w-4 text-white/0 transition-all duration-300 group-hover:text-white/60"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={2}
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
                           </Link>
                         </motion.div>
                       ))}

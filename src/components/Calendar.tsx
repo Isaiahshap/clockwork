@@ -3,6 +3,16 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import scheduleData from '@/data/schedule.json';
+import {
+  buildMonthData,
+  canGoToNextMonth,
+  canGoToPreviousMonth,
+  getCurrentCalendarMonth,
+  getFirstDayOffset,
+  getMonthKey,
+  getNextMonth,
+  getPreviousMonth,
+} from '@/lib/calendar';
 
 interface ClassData {
   time: string;
@@ -22,60 +32,40 @@ const classColors = {
   'competition': 'bg-purple-600 text-white'
 };
 
-const monthKeys = [
-  'january2026',
-  'february2026',
-  'march2026',
-  'april2026',
-  'may2026',
-  'june2026',
-  'july2026',
-  'august2026',
-  'september2026'
-];
-
 export default function Calendar() {
-  const [currentMonthIndex, setCurrentMonthIndex] = useState(4);
+  const [viewMonth, setViewMonth] = useState(getCurrentCalendarMonth);
 
-  const currentMonthKey = monthKeys[currentMonthIndex];
-  const monthData = scheduleData.months[currentMonthKey as keyof typeof scheduleData.months];
-  
+  const monthData = buildMonthData(viewMonth.year, viewMonth.month);
+  const monthKey = getMonthKey(viewMonth);
+
   const getClassesForDay = (dayOfWeek: string): ClassData[] => {
     return scheduleData.classes[dayOfWeek as keyof typeof scheduleData.classes] || [];
   };
 
-  const getFirstDayOffset = () => {
-    const firstDay = monthData.days[0];
-    const dayOrder = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-    return dayOrder.indexOf(firstDay.dayOfWeek);
-  };
-
   const goToPreviousMonth = () => {
-    if (currentMonthIndex > 0) {
-      setCurrentMonthIndex(currentMonthIndex - 1);
+    if (canGoToPreviousMonth(viewMonth)) {
+      setViewMonth(getPreviousMonth(viewMonth));
     }
   };
 
   const goToNextMonth = () => {
-    if (currentMonthIndex < monthKeys.length - 1) {
-      setCurrentMonthIndex(currentMonthIndex + 1);
+    if (canGoToNextMonth(viewMonth)) {
+      setViewMonth(getNextMonth(viewMonth));
     }
   };
 
   const renderMonthView = () => {
-    const offset = getFirstDayOffset();
+    const offset = getFirstDayOffset(viewMonth.year, viewMonth.month);
     const days = monthData.days;
     const weeks: React.ReactNode[] = [];
     let currentWeek: React.ReactNode[] = [];
 
-    // Add empty cells for offset
     for (let i = 0; i < offset; i++) {
       currentWeek.push(
         <div key={`empty-${i}`} className="border border-white/10 bg-black/20 min-h-[300px] md:min-h-[400px]"></div>
       );
     }
 
-    // Add days
     days.forEach((day) => {
       const classes = getClassesForDay(day.dayOfWeek);
       currentWeek.push(
@@ -105,7 +95,6 @@ export default function Calendar() {
       }
     });
 
-    // Add remaining week if not complete
     if (currentWeek.length > 0) {
       while (currentWeek.length < 7) {
         currentWeek.push(
@@ -125,7 +114,6 @@ export default function Calendar() {
 
   return (
     <div className="w-full">
-      {/* Header */}
       <div className="mb-4 md:mb-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-3">
           <motion.h2 
@@ -138,11 +126,10 @@ export default function Calendar() {
           </motion.h2>
         </div>
 
-        {/* Navigation */}
         <div className="flex items-center gap-2 md:gap-4">
           <button
             onClick={goToPreviousMonth}
-            disabled={currentMonthIndex === 0}
+            disabled={!canGoToPreviousMonth(viewMonth)}
             className="font-bebas px-3 md:px-6 py-2 text-xs md:text-base bg-white text-black hover:bg-gray-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed tracking-wider flex-1 md:flex-none"
           >
             <span className="hidden md:inline">← PREVIOUS MONTH</span>
@@ -150,7 +137,7 @@ export default function Calendar() {
           </button>
           <button
             onClick={goToNextMonth}
-            disabled={currentMonthIndex === monthKeys.length - 1}
+            disabled={!canGoToNextMonth(viewMonth)}
             className="font-bebas px-3 md:px-6 py-2 text-xs md:text-base bg-white text-black hover:bg-gray-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed tracking-wider flex-1 md:flex-none"
           >
             <span className="hidden md:inline">NEXT MONTH →</span>
@@ -159,7 +146,6 @@ export default function Calendar() {
         </div>
       </div>
 
-      {/* Day Headers */}
       <div className="grid grid-cols-7 gap-0 mb-0">
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day, index) => {
           const fullDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][index];
@@ -172,9 +158,8 @@ export default function Calendar() {
         })}
       </div>
 
-      {/* Calendar Grid */}
       <motion.div
-        key={currentMonthKey}
+        key={monthKey}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -182,7 +167,6 @@ export default function Calendar() {
         {renderMonthView()}
       </motion.div>
 
-      {/* Legend */}
       <div className="mt-6 md:mt-8 p-4 md:p-6 bg-black/40 border border-white/10">
         <h3 className="font-bebas text-xl md:text-2xl tracking-wider mb-3 md:mb-4">CLASS TYPES</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3">
@@ -211,4 +195,3 @@ export default function Calendar() {
     </div>
   );
 }
-
