@@ -20,6 +20,14 @@ interface ClassData {
   type: string;
 }
 
+interface EventData {
+  date: string;
+  time: string;
+  name: string;
+  location?: string;
+  type: string;
+}
+
 const classColors = {
   'gi': 'bg-red-600 text-white',
   'nogi': 'bg-cyan-400 text-black',
@@ -29,7 +37,9 @@ const classColors = {
   'kids': 'bg-red-600 text-white',
   'fundamentals': 'bg-gray-100 text-black',
   'ugs': 'bg-red-600 text-white',
-  'competition': 'bg-purple-600 text-white'
+  'competition': 'bg-purple-600 text-white',
+  'special-event': 'bg-amber-400 text-black',
+  'bootcamp-start': 'bg-green-500 text-white',
 };
 
 export default function Calendar() {
@@ -40,6 +50,12 @@ export default function Calendar() {
 
   const getClassesForDay = (dayOfWeek: string): ClassData[] => {
     return scheduleData.classes[dayOfWeek as keyof typeof scheduleData.classes] || [];
+  };
+
+  const getEventsForDate = (year: number, month: number, date: number): EventData[] => {
+    const pad = (n: number) => String(n).padStart(2, '0');
+    const key = `${year}-${pad(month + 1)}-${pad(date)}`;
+    return (scheduleData.events as EventData[]).filter((e) => e.date === key);
   };
 
   const goToPreviousMonth = () => {
@@ -68,10 +84,20 @@ export default function Calendar() {
 
     days.forEach((day) => {
       const classes = getClassesForDay(day.dayOfWeek);
+      const events = getEventsForDate(viewMonth.year, viewMonth.month, day.date);
       currentWeek.push(
         <div key={day.date} className="border border-white/10 bg-black/40 min-h-[300px] md:min-h-[400px] p-1 md:p-2 flex flex-col">
           <div className="font-bebas text-base md:text-lg mb-1 md:mb-2 sticky top-0 bg-black/40 py-1">{day.date}</div>
           <div className="space-y-0.5 md:space-y-1 flex-1 overflow-y-auto">
+            {events.map((evt, idx) => (
+              <div
+                key={`evt-${idx}`}
+                className={`text-[10px] md:text-xs px-1 md:px-2 py-0.5 md:py-1 ${classColors[evt.type as keyof typeof classColors] || 'bg-amber-400 text-black'}`}
+              >
+                <div className="font-bold leading-tight">{evt.time}</div>
+                <div className="leading-tight font-semibold">{evt.name}</div>
+              </div>
+            ))}
             {classes.map((cls, idx) => (
               <div
                 key={idx}
@@ -189,6 +215,14 @@ export default function Calendar() {
           <div className="flex items-center gap-2">
             <div className="w-5 h-5 md:w-6 md:h-6 bg-purple-600 flex-shrink-0"></div>
             <span className="font-montserrat text-xs md:text-sm">Competition Class</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 md:w-6 md:h-6 bg-amber-400 flex-shrink-0"></div>
+            <span className="font-montserrat text-xs md:text-sm">Special Event</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 md:w-6 md:h-6 bg-green-500 flex-shrink-0"></div>
+            <span className="font-montserrat text-xs md:text-sm">Bootcamp</span>
           </div>
         </div>
       </div>

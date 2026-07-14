@@ -1,4 +1,27 @@
 {
+  "events": [
+    {
+      "date": "2026-07-25",
+      "time": "5:00 PM",
+      "name": "Rockaway Hotel Rooftop Invitational",
+      "location": "The Rockaway Hotel Rooftop, Rockaway Beach, NY",
+      "type": "special-event"
+    },
+    {
+      "date": "2026-08-01",
+      "time": "3:00 PM",
+      "name": "Clockwork x 7th Street Burger Cookout",
+      "location": "173 Orchard St, New York, NY",
+      "type": "special-event"
+    },
+    {
+      "date": "2026-08-04",
+      "time": "7:30 PM",
+      "name": "August Beginner Bootcamp Starts",
+      "location": "Clockwork BJJ, 650 Broadway",
+      "type": "bootcamp-start"
+    }
+  ],
   "classes": {
     "sunday": [
       { "time": "12:00 PM", "name": "GI", "type": "gi" },
