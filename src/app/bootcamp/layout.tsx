@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'BJJ Bootcamp | August 4 | Clockwork BJJ NYC',
+  title: 'BJJ Bootcamp | September 8 | Clockwork BJJ NYC',
   description:
-    "August Beginners Bootcamp starts August 4th at 7:30 PM at Clockwork BJJ NYC. Last month's cohort sold out in a couple of weeks — secure your spot in our 4-week intro to BJJ.",
+    "September Beginners Bootcamp starts September 8th at 7:30 PM at Clockwork BJJ NYC. Last month's cohort sold out in a couple of weeks — secure your spot in our 4-week intro to BJJ.",
   keywords: ['bjj bootcamp nyc', 'brazilian jiu jitsu intensive training', 'clockwork bjj bootcamp', 'bjj workshop manhattan', 'intensive martial arts training nyc'],
   openGraph: {
-    title: 'BJJ Bootcamp — August 4 | Clockwork NYC',
+    title: 'BJJ Bootcamp — September 8 | Clockwork NYC',
     description:
-      'August bootcamp kicks off August 4th at 7:30 PM. Last month sold out quickly — beginner-friendly 4-week course with uniform included.',
+      'September bootcamp kicks off September 8th at 7:30 PM. Last month sold out quickly — beginner-friendly 4-week course with uniform included.',
     type: 'website',
     locale: 'en_US',
     siteName: 'Clockwork Brazilian Jiu-Jitsu',
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BJJ Bootcamp — August 4 | Clockwork NYC',
+    title: 'BJJ Bootcamp — September 8 | Clockwork NYC',
     description:
-      'August bootcamp August 4th at 7:30 PM. Last month sold out in a couple weeks — 4-week beginners course at Clockwork BJJ.',
+      'September bootcamp September 8th at 7:30 PM. Last month sold out in a couple weeks — 4-week beginners course at Clockwork BJJ.',
     images: ['/images/hero-bg3.webp']
   },
   alternates: {
@@ -59,7 +59,8 @@ export default function BootcampLayout({
             "@context": "https://schema.org",
             "@type": "Event",
             "name": "Brazilian Jiu-Jitsu Bootcamp",
-            "description": "Intensive Brazilian Jiu-Jitsu training program designed for accelerated skill development",
+            "description": "4-week Beginners Bootcamp starting September 8th at 7:30 PM — a structured introduction to Brazilian Jiu-Jitsu",
+            "startDate": "2026-09-08T19:30:00-04:00",
             "organizer": {
               "@type": "Organization",
               "name": "Clockwork Brazilian Jiu-Jitsu"

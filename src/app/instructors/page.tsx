@@ -71,18 +71,18 @@ Ray loves the community at Clockwork, where he's built lifelong friendships. Out
     },
     {
       name: "Victor Hugo (Vic / Vicky)",
-      rank: "Brown Belt",
+      rank: "Black Belt",
       bio: `Victor grew up in New York City by way of Philadelphia and first dipped his toes into Brazilian Jiu Jitsu a few times when he was younger. He began training seriously with Josh at Clockwork BJJ and has been a dedicated student of the art ever since.
 
-As a brown belt, Victor emphasizes strong fundamentals, positional awareness, and freedom of movement—helping students understand that advanced techniques become easier when the basics are rock solid. Outside of Jiu Jitsu, Victor has launched his own private practice that blends bodywork, movement, and martial arts, furthering his passion for human performance.
+As a black belt, Victor emphasizes strong fundamentals, positional awareness, and freedom of movement—helping students understand that advanced techniques become easier when the basics are rock solid. Outside of Jiu Jitsu, Victor has launched his own private practice that blends bodywork, movement, and martial arts, furthering his passion for human performance.
 
 At Clockwork, he values the relationships built through training and teaching, and his style is best described as concise, fluid, dynamic, and no-nonsense. Students might be surprised to learn that in his early 20s, Victor was a party DJ.`,
       advice: "Focus on fundamentals and foundation techniques—don't chase shiny objects early on. A solid base will make your practice powerful and beautiful."
     },
     {
       name: "Anthony Grajales",
-      rank: "Brown Belt",
-      bio: `Anthony is a brown belt under Josh Griffiths and has been training at Clockwork Jiu Jitsu since 2016. He grew up in Washington Heights and Staten Island, and started BJJ with no grappling experience—just a lot of curiosity and energy.
+      rank: "Black Belt",
+      bio: `Anthony is a black belt under Josh Griffiths and has been training at Clockwork Jiu Jitsu since 2016. He grew up in Washington Heights and Staten Island, and started BJJ with no grappling experience—just a lot of curiosity and energy.
 
 Since then, Anthony has competed in over a hundred tournaments, winning American Nationals at purple belt and both the European Championships and Pan Ams at brown belt. He especially loves teaching back control offense and defense, and his classes are known for being playful, focused, and easy to follow.
 
@@ -91,8 +91,8 @@ What Anthony enjoys most about teaching at Clockwork is the friendly, fun, and s
     },
     {
       name: "Shai",
-      rank: "Brown Belt",
-      bio: `Shai started training at Clockwork BJJ back in 2008 when his dad first brought him in for a class. He was instantly hooked and has been on the mats ever since. Now a brown belt under Sensei Josh Griffiths, Shai loves teaching positions like the split squat and knee cut pass, and he brings a patient, precise, and creative approach to every class.
+      rank: "Black Belt",
+      bio: `Shai started training at Clockwork BJJ back in 2008 when his dad first brought him in for a class. He was instantly hooked and has been on the mats ever since. Now a black belt under Sensei Josh Griffiths, Shai loves teaching positions like the split squat and knee cut pass, and he brings a patient, precise, and creative approach to every class.
 
 You'll often find him running Clockwork's UGS (game-based) classes, helping students explore different scenarios and figure out their own paths to success. For Shai, the best part of teaching is watching students grow, improve, and have fun along the way.
 
@@ -101,8 +101,8 @@ Fun fact: He's a big fan of crime movies and director Michael Mann.`,
     },
     {
       name: "Anthony Thomas Giordano",
-      rank: "Brown Belt",
-      bio: `Anthony is a brown belt under Josh Griffiths who started training Jiu Jitsu in 2015 after finishing his wrestling career.
+      rank: "Black Belt",
+      bio: `Anthony is a black belt under Josh Griffiths who started training Jiu Jitsu in 2015 after finishing his wrestling career.
 
 He enjoys teaching closed guard and modern guard variations like DLR, waiter guard, and K guard. As a competitor, Anthony is an American National medalist and a multiple-time IBJJF Open champion and medalist.
 
@@ -111,8 +111,8 @@ At Clockwork, he loves sharing Jiu Jitsu with all kinds of people and making a p
     },
     {
       name: "Ashley \"SmAshley\" Bembry-Kaintuck",
-      rank: "Purple Belt",
-      bio: `Ashley is a purple belt under Josh Griffiths who started training Jiu Jitsu in 2019 while still competing in bodybuilding. What started as a fun way to add cardio quickly turned into a passion, and she's been on the mats ever since.
+      rank: "Brown Belt",
+      bio: `Ashley is a brown belt under Josh Griffiths who started training Jiu Jitsu in 2019 while still competing in bodybuilding. What started as a fun way to add cardio quickly turned into a passion, and she's been on the mats ever since.
 
 Her favorite technique to teach is the back take from mount, and she especially enjoys working with women new to the sport. Seeing white belts gain confidence and fall in love with Jiu Jitsu is one of the most rewarding parts of teaching for her.
 
@@ -165,7 +165,7 @@ Outside of Jiu Jitsu, Esther is also the frontwoman of her own band, playing sho
         {/* Introduction */}
         <div className="text-center mb-16">
           <p className="text-white/80 text-xl max-w-3xl mx-auto mb-6 leading-relaxed">
-            Meet the dedicated team of black, brown, purple, and blue belts who bring passion, 
+            Meet the dedicated team of black, brown, and blue belts who bring passion, 
             expertise, and years of experience to every class at Clockwork Jiu Jitsu.
           </p>
           <p className="text-white/80 text-lg max-w-4xl mx-auto leading-relaxed">
