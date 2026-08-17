@@ -78,12 +78,9 @@ export default function BootcampPage() {
             >
               <div className="bg-gradient-to-r from-red-900/30 to-orange-900/30 border-2 border-red-500/50 p-8">
                 <div className="text-center">
-                  <div className="inline-block bg-red-500/20 px-4 py-2 mb-4">
-                    <span className="font-bebas text-xl tracking-wider text-red-400">⚠️ SPOTS FILL FAST</span>
-                  </div>
-                  <h3 className="font-bebas text-3xl md:text-4xl mb-4 tracking-wide">LAST MONTH&apos;S BOOTCAMP SOLD OUT WITHIN A COUPLE OF WEEKS</h3>
+                  <h3 className="font-bebas text-3xl md:text-4xl mb-4 tracking-wide">STARTS TUESDAY, SEPTEMBER 8TH AT 7:30 PM</h3>
                   <p className="font-montserrat text-lg mb-6">
-                    Our September bootcamp starts Tuesday, September 8th at 7:30 PM — register below before spots are gone!
+                    Register below to secure your spot in our 4-week Beginners Bootcamp.
                   </p>
                   <div className="flex justify-center">
                     <div className="inline-flex items-center bg-white/10 px-6 py-3 border border-white/20">

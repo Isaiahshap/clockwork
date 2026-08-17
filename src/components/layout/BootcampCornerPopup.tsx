@@ -75,7 +75,7 @@ export default function BootcampCornerPopup() {
                   BOOTCAMP · SEP 8
                 </p>
                 <p id="bootcamp-corner-desc" className="mt-0.5 truncate font-montserrat text-[10px] leading-tight text-white/65">
-                  Sign up · last month sold out fast
+                  4-week beginners course · 7:30 PM
                 </p>
               </div>
               <Link
@@ -92,7 +92,7 @@ export default function BootcampCornerPopup() {
                 BEGINNERS BOOTCAMP
               </p>
               <p className="mt-2 font-montserrat text-xs leading-snug text-white/75" id="bootcamp-corner-desc-desktop">
-                Sign up for our bootcamp — starts <span className="text-white">September 8th</span>. Last month sold out quickly.
+                Sign up for our 4-week beginners bootcamp — starts <span className="text-white">September 8th</span> at 7:30 PM.
               </p>
               <Link
                 href="/bootcamp"

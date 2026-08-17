@@ -28,14 +28,9 @@ export default function BootcampPromo() {
               </div>
             </div>
             <div className="p-8">
-              <div className="mb-4">
-                <span className="inline-block bg-red-500/20 border border-red-500/50 px-3 py-1 font-bebas text-sm tracking-wider text-red-400">
-                  ⚠️ LAST MONTH SOLD OUT IN A COUPLE WEEKS
-                </span>
-              </div>
               <h3 className="font-bebas text-2xl mb-4 tracking-wide">SEPTEMBER BOOTCAMP — STARTS SEPTEMBER 8TH</h3>
               <p className="font-montserrat mb-6">
-                Last month&apos;s bootcamp sold out within a couple of weeks. Don&apos;t miss your chance to join our September 4-week Beginners Bootcamp starting September 8th at 7:30 PM:
+                Join our 4-week Beginners Bootcamp starting September 8th at 7:30 PM:
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-center">

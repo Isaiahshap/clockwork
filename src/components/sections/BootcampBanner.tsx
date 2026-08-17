@@ -14,10 +14,7 @@ export default function BootcampBanner() {
       >
         <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-center">
           <p className="font-bebas text-sm md:text-base lg:text-lg text-white/90 tracking-wide">
-            <span className="inline-block">LAST MONTH&apos;S BOOTCAMP SOLD OUT IN A COUPLE WEEKS</span>
-            <span className="hidden md:inline mx-2">•</span>
-            <span className="block md:inline mt-1 md:mt-0">SEPTEMBER BOOTCAMP STARTS SEPTEMBER 8TH </span>
-            <span className="italic text-white/70">(LIMITED SPOTS)</span>
+            <span className="block md:inline">SEPTEMBER BOOTCAMP STARTS SEPTEMBER 8TH</span>
           </p>
           <Link
             href="/bootcamp"

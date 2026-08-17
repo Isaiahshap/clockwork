@@ -3,12 +3,12 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'BJJ Bootcamp | September 8 | Clockwork BJJ NYC',
   description:
-    "September Beginners Bootcamp starts September 8th at 7:30 PM at Clockwork BJJ NYC. Last month's cohort sold out in a couple of weeks — secure your spot in our 4-week intro to BJJ.",
+    "September Beginners Bootcamp starts September 8th at 7:30 PM at Clockwork BJJ NYC. Secure your spot in our 4-week intro to BJJ.",
   keywords: ['bjj bootcamp nyc', 'brazilian jiu jitsu intensive training', 'clockwork bjj bootcamp', 'bjj workshop manhattan', 'intensive martial arts training nyc'],
   openGraph: {
     title: 'BJJ Bootcamp — September 8 | Clockwork NYC',
     description:
-      'September bootcamp kicks off September 8th at 7:30 PM. Last month sold out quickly — beginner-friendly 4-week course with uniform included.',
+      'September bootcamp kicks off September 8th at 7:30 PM — beginner-friendly 4-week course with uniform included.',
     type: 'website',
     locale: 'en_US',
     siteName: 'Clockwork Brazilian Jiu-Jitsu',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'BJJ Bootcamp — September 8 | Clockwork NYC',
     description:
-      'September bootcamp September 8th at 7:30 PM. Last month sold out in a couple weeks — 4-week beginners course at Clockwork BJJ.',
+      'September bootcamp September 8th at 7:30 PM — 4-week beginners course at Clockwork BJJ.',
     images: ['/images/hero-bg3.webp']
   },
   alternates: {
