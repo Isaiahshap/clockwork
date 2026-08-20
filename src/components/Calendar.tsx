@@ -18,6 +18,8 @@ interface ClassData {
   time: string;
   name: string;
   type: string;
+  startDate?: string;
+  endDate?: string;
 }
 
 interface EventData {
@@ -48,13 +50,30 @@ export default function Calendar() {
   const monthData = buildMonthData(viewMonth.year, viewMonth.month);
   const monthKey = getMonthKey(viewMonth);
 
-  const getClassesForDay = (dayOfWeek: string): ClassData[] => {
-    return scheduleData.classes[dayOfWeek as keyof typeof scheduleData.classes] || [];
+  const toDateKey = (year: number, month: number, date: number) => {
+    const pad = (n: number) => String(n).padStart(2, '0');
+    return `${year}-${pad(month + 1)}-${pad(date)}`;
+  };
+
+  const getClassesForDay = (
+    dayOfWeek: string,
+    year: number,
+    month: number,
+    date: number,
+  ): ClassData[] => {
+    const classes = (scheduleData.classes[dayOfWeek as keyof typeof scheduleData.classes] ||
+      []) as ClassData[];
+    const dateKey = toDateKey(year, month, date);
+
+    return classes.filter((cls) => {
+      if (cls.startDate && dateKey < cls.startDate) return false;
+      if (cls.endDate && dateKey > cls.endDate) return false;
+      return true;
+    });
   };
 
   const getEventsForDate = (year: number, month: number, date: number): EventData[] => {
-    const pad = (n: number) => String(n).padStart(2, '0');
-    const key = `${year}-${pad(month + 1)}-${pad(date)}`;
+    const key = toDateKey(year, month, date);
     return (scheduleData.events as EventData[]).filter((e) => e.date === key);
   };
 
@@ -83,7 +102,7 @@ export default function Calendar() {
     }
 
     days.forEach((day) => {
-      const classes = getClassesForDay(day.dayOfWeek);
+      const classes = getClassesForDay(day.dayOfWeek, viewMonth.year, viewMonth.month, day.date);
       const events = getEventsForDate(viewMonth.year, viewMonth.month, day.date);
       currentWeek.push(
         <div key={day.date} className="border border-white/10 bg-black/40 min-h-[300px] md:min-h-[400px] p-1 md:p-2 flex flex-col">

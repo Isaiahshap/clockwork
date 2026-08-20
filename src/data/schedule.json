@@ -39,6 +39,7 @@
     "tuesday": [
       { "time": "7:00 AM", "name": "GI", "type": "gi" },
       { "time": "12:00 PM", "name": "GI", "type": "gi" },
+      { "time": "4:45 PM", "name": "Kids 9-13", "type": "kids", "startDate": "2026-09-08" },
       { "time": "5:30 PM", "name": "Blue Belt", "type": "blue-belt" },
       { "time": "5:30 PM", "name": "White Belt", "type": "white-belt" },
       { "time": "6:30 PM", "name": "No Gi", "type": "nogi" },
@@ -58,6 +59,7 @@
     "thursday": [
       { "time": "7:00 AM", "name": "GI", "type": "gi" },
       { "time": "12:00 PM", "name": "GI", "type": "gi" },
+      { "time": "4:45 PM", "name": "Kids 9-13", "type": "kids", "startDate": "2026-09-08" },
       { "time": "5:30 PM", "name": "Blue Belt", "type": "blue-belt" },
       { "time": "5:30 PM", "name": "White Belt", "type": "white-belt" },
       { "time": "6:30 PM", "name": "No Gi", "type": "nogi" },

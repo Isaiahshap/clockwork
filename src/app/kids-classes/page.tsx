@@ -213,7 +213,7 @@ export default function KidsClassesPage() {
                   Our Kids Jiu Jitsu classes are designed for children ages 4-14. The ultimate goal of the children&apos;s BJJ program is to facilitate children in their personal development through the art of Jiu Jitsu.
                 </p>
                 <p className="font-montserrat text-lg mb-6">
-                  Classes are held Monday thru Friday at 4:15pm and on Saturday at 10:30am. Our students have seen dramatic improvements academically, socially, and within the home. The best part is that your child will love Jiu Jitsu because it&apos;s so much fun. We are sure your child will love learning Martial Arts at Clockwork Jiu Jitsu. Sign up today for your free Children&apos;s Jiu Jitsu class.
+                  Classes are held after school through the week and on Saturday mornings. Kids 9-13 also train Tuesdays and Thursdays at 4:45pm, starting again September 8th. Our students have seen dramatic improvements academically, socially, and within the home. The best part is that your child will love Jiu Jitsu because it&apos;s so much fun. We are sure your child will love learning Martial Arts at Clockwork Jiu Jitsu. Sign up today for your free Children&apos;s Jiu Jitsu class.
                 </p>
               </div>
             </motion.div>
