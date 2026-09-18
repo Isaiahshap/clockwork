@@ -72,7 +72,7 @@ export default function BootcampCornerPopup() {
             <div className="flex items-center gap-2 px-3 py-2 pr-11 md:hidden">
               <div className="min-w-0 flex-1">
                 <p id="bootcamp-corner-title" className="font-bebas text-[15px] leading-tight tracking-wide text-white">
-                  BOOTCAMP · SEP 8
+                  BOOTCAMP · OCT 6
                 </p>
                 <p id="bootcamp-corner-desc" className="mt-0.5 truncate font-montserrat text-[10px] leading-tight text-white/65">
                   4-week beginners course · 7:30 PM
@@ -92,7 +92,7 @@ export default function BootcampCornerPopup() {
                 BEGINNERS BOOTCAMP
               </p>
               <p className="mt-2 font-montserrat text-xs leading-snug text-white/75" id="bootcamp-corner-desc-desktop">
-                Sign up for our 4-week beginners bootcamp — starts <span className="text-white">September 8th</span> at 7:30 PM.
+                Sign up for our 4-week beginners bootcamp — starts <span className="text-white">October 6th</span> at 7:30 PM.
               </p>
               <Link
                 href="/bootcamp"

@@ -65,7 +65,7 @@ export default function BootcampPage() {
               <h2 className="font-bebas text-3xl md:text-4xl mb-6 tracking-wider">4-WEEK BEGINNERS COURSE</h2>
               <p className="font-montserrat text-lg max-w-3xl mx-auto">
                 If you&apos;ve ever thought about trying Brazilian Jiu Jitsu, here&apos;s your chance.
-                Our next 4-week Beginners Course starts Tuesday, September 8th at 7:30 PM — designed specifically for people who are brand new to BJJ.
+                Our next 4-week Beginners Course starts Tuesday, October 6th at 7:30 PM — designed specifically for people who are brand new to BJJ.
               </p>
             </motion.div>
 
@@ -78,7 +78,7 @@ export default function BootcampPage() {
             >
               <div className="bg-gradient-to-r from-red-900/30 to-orange-900/30 border-2 border-red-500/50 p-8">
                 <div className="text-center">
-                  <h3 className="font-bebas text-3xl md:text-4xl mb-4 tracking-wide">STARTS TUESDAY, SEPTEMBER 8TH AT 7:30 PM</h3>
+                  <h3 className="font-bebas text-3xl md:text-4xl mb-4 tracking-wide">STARTS TUESDAY, OCTOBER 6TH AT 7:30 PM</h3>
                   <p className="font-montserrat text-lg mb-6">
                     Register below to secure your spot in our 4-week Beginners Bootcamp.
                   </p>

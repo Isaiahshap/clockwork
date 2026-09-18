@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function Marquee() {
   const messages = [
-    "🔥 SEPTEMBER BOOTCAMP STARTS SEPTEMBER 8TH",
+    "🔥 OCTOBER BOOTCAMP STARTS OCTOBER 6TH",
     "NO EGO ZONE • ALL LEVELS WELCOME",
     "FREE TRIAL CLASS AVAILABLE",
     "650 BROADWAY • NOHO, NYC",

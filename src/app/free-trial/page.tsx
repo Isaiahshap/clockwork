@@ -423,9 +423,9 @@ export default function FreeTrialPage() {
                     </div>
                   </div>
                   <div className="p-8">
-                    <h3 className="font-bebas text-2xl mb-4 tracking-wide">SEPTEMBER BOOTCAMP — STARTS SEPTEMBER 8TH</h3>
+                    <h3 className="font-bebas text-2xl mb-4 tracking-wide">OCTOBER BOOTCAMP — STARTS OCTOBER 6TH</h3>
                     <p className="font-montserrat mb-6">
-                      Looking for a structured introduction to BJJ? Our September 4-week Beginners Bootcamp starts September 8th at 7:30 PM and includes:
+                      Looking for a structured introduction to BJJ? Our October 4-week Beginners Bootcamp starts October 6th at 7:30 PM and includes:
                     </p>
                     <ul className="space-y-3 mb-6">
                       <li className="flex items-center">
